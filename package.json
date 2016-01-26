@@ -3,6 +3,10 @@
   "version": "0.4.1",
   "description": "Node.js Library for communicating with the Philips Hue Bridge and Lights",
   "main": "lib/index.js",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/gmickel/hugh"
+  },
   "scripts": {
     "test": "./node_modules/.bin/mocha --opts .mocha.opts test",
     "coverage": "istanbul cover --report text --report html --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --reporter dot test/*.js",
