@@ -1,0 +1,19 @@
+{
+  "ecmaVersion": 6,
+  "libs": [
+    "browser"
+  ],
+  "dontLoad": [
+  "lib/**/*.js"
+  ],
+  "plugins": {
+    "complete_strings": {},
+    "node": {},
+    "requirejs": {},
+    "modules": {},
+    "es_modules": {},
+    "doc_comment": {
+      "fullDocs": true
+    }
+  }
+}
