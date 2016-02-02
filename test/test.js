@@ -2,11 +2,11 @@ const testValues = require('./common/testEnvValues');
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 const expect = require('chai').expect;
-const hugh = require('../lib/index');
+const HueApi = require('../lib/index').HueApi;
 
 chai.use(chaiAsPromised);
 
-const hue = new hugh.HueApi(testValues.host, testValues.username);
+const hue = new HueApi(testValues.host, testValues.username);
 
 describe('Hugh', () => {
   describe('config', () => {

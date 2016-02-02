@@ -63,12 +63,8 @@ class LightState {
   }
 }
 
-module.exports.create = (values) => {
-  const state = new LightState(values);
+/*module.exports.create = function create(values) {
+  return new LightState(values);
+};*/
 
-  if (values) {
-    // do something
-  }
-
-  return state;
-};
+module.exports = LightState;

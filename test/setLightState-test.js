@@ -4,7 +4,8 @@ const testValues = require('./common/testEnvValues');
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 const expect = require('chai').expect;
-const hugh = require('../lib/index');
+const HueApi = require('../lib/index').HueApi;
+const LightState = require('../lib/lightstate');
 const lightId = testValues.testLightId;
 
 chai.use(chaiAsPromised);
@@ -19,8 +20,8 @@ describe('Hugh', () => {
     let state;
 
     beforeEach(() => {
-      state = hugh.lightState.create();
-      hue = new hugh.HueApi(testValues.host, testValues.username);
+      state = new LightState();
+      hue = new HueApi(testValues.host, testValues.username);
     });
 
     describe('turn light on', () => {
@@ -58,8 +59,7 @@ describe('Hugh', () => {
           done();
         };
 
-        //let initialState = lightState.create().on().brightness(50);
-        let initialState = hugh.lightState.create().on().bri(50);
+        let initialState = new LightState().on().bri(50);
         hue.setLightState(lightId, initialState).then((response) => {
           checkResults(response.data);
         });

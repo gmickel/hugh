@@ -5,7 +5,7 @@ const chaiAsPromised = require('chai-as-promised');
 const expect = require('chai').expect;
 const testValues = require('./common/testEnvValues');
 const lightId = testValues.testLightId;
-const hugh = require('../lib/index');
+const HueApi = require('../lib/index').HueApi;
 
 chai.use(chaiAsPromised);
 
@@ -15,7 +15,7 @@ describe('Hugh', () => {
     let state;
 
     beforeEach(() => {
-      hue = new hugh.HueApi(testValues.host, testValues.username);
+      hue = new HueApi(testValues.host, testValues.username);
     });
 
     describe('get all lights', () => {
