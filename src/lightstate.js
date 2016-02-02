@@ -29,7 +29,8 @@ class LightState {
 
   /**
    * Adds the hue for the desired colour.
-   * @param value The hue value is a wrapping value between 0 and 65535. Both 0 and 65535 are red, 25500 is green and 46920 is blue.
+   * @param value The hue value is a wrapping value between 0 and 65535.
+   * Both 0 and 65535 are red, 25500 is green and 46920 is blue.
    * @return {LightState}
    */
   hue(value) {
@@ -39,7 +40,7 @@ class LightState {
 
   /**
    * The saturation of the color for the bulb, 0 being the least saturated i.e. white.
-   * @param saturation The saturation value 0 to 255
+   * @param value The saturation value 0 to 255
    * @return {LightState}
    */
   sat(value) {
@@ -62,9 +63,5 @@ class LightState {
     return this;
   }
 }
-
-/*module.exports.create = function create(values) {
-  return new LightState(values);
-};*/
 
 module.exports = LightState;
