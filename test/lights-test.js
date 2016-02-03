@@ -20,7 +20,7 @@ describe('Hugh', () => {
 
     describe('get all lights', () => {
       it('returns a success message', function doneCB(done) {
-        const checkResults = function(results) {
+        const checkResults = function (results) {
           expect(results).to.be.true; // eslint-disable-line no-unused-expressions
           done();
         };
@@ -34,7 +34,7 @@ describe('Hugh', () => {
 
     describe('get light status', () => {
       it('returns a success message', function doneCB(done) {
-        const checkResults = function(results) {
+        const checkResults = function (results) {
           expect(results).to.be.true; // eslint-disable-line no-unused-expressions
           done();
         };
