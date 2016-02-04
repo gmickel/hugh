@@ -2,11 +2,7 @@ const util = require('util');
 
 export function wasSuccessful(results) {
   for (const result of results) {
-    if (result.success === undefined) {
-      return false;
-    }
-
-    return true;
+    return result.success !== undefined;
   }
 }
 

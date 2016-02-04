@@ -15,7 +15,7 @@
     "fix": "eslint --fix -c ./.eslintrc src test",
     "lint": "eslint -c ./.eslintrc src test",
     "prepublish": "npm run compile",
-    "preversion": "npm run compile",
+    "preversion": "npm run lint && npm run compile",
     "watch": "babel --presets es2015-node -d lib/ src/ --watch --source-maps true",
     "package:check": "./node_modules/.bin/ncu",
     "package:upgrade": "./node_modules/.bin/ncu -u",

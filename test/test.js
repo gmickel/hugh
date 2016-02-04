@@ -21,9 +21,6 @@ describe('Hugh', () => {
         .then((response) => {
           validateConfigResults(response.data);
           done();
-        })
-        .catch((error) => {
-          done(error);
         });
     });
   });

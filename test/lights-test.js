@@ -27,7 +27,7 @@ describe('Hugh', () => {
 
         hue.getLights().then((response) => {
           console.log(response.data);
-          done();
+          checkResults(response.data);
         });
       });
     });

@@ -6,8 +6,7 @@ export function responseInterceptor(response) {
     response.data = true;
   } else {
     // Transform the response object to only include the errors returned from the hue bridge
-    let errors = utils.parseErrors(response.data);
-    response.data = errors;
+    response.data = utils.parseErrors(response.data);
   }
 
   return response;
