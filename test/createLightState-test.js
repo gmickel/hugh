@@ -1,6 +1,5 @@
 'use strict';
 
-const testValues = require('./common/testEnvValues');
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 const expect = require('chai').expect;

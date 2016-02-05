@@ -1,3 +1,5 @@
+'use strict';
+
 const testValues = require('./common/testEnvValues');
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
@@ -20,9 +22,6 @@ describe('Hugh', () => {
         .then((response) => {
           validateDiscoveryResults(response.data);
           done();
-        })
-        .catch((error) => {
-          done(error);
         });
     });
   });

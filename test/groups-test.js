@@ -17,18 +17,17 @@ describe('Hugh', () => {
     beforeEach(() => {
       hue = new HueApi(testValues.host, testValues.username);
       state = new LightState();
-
     });
 
     describe('turn all lights off', () => {
       it('returns a success message', function doneCB(done) {
-        const validateLightStateOnResults = function(results) {
+        const validateLightStateOnResults = function validateLightStateOnResults(results) {
           expect(results).to.be.true; // eslint-disable-line no-unused-expressions
           done();
         };
 
         state.off();
-        hue.setGroupState(1, state).then((response) => {
+        hue.setGroupState(testValues.testLightId, state).then((response) => {
           validateLightStateOnResults(response.data);
         });
       });
@@ -36,13 +35,13 @@ describe('Hugh', () => {
 
     describe('turn all lights on', () => {
       it('returns a success message', function doneCB(done) {
-        const validateLightStateOnResults = function(results) {
+        const validateLightStateOnResults = function validateLightStateOnResults(results) {
           expect(results).to.be.true; // eslint-disable-line no-unused-expressions
           done();
         };
 
         state.on();
-        hue.setGroupState(1, state).then((response) => {
+        hue.setGroupState(testValues.testLightId, state).then((response) => {
           validateLightStateOnResults(response.data);
         });
       });
@@ -50,17 +49,16 @@ describe('Hugh', () => {
 
     describe('set multiple states', () => {
       it('returns a success message', function doneCB(done) {
-        const validateLightStateOnResults = function(results) {
+        const validateLightStateOnResults = function validateLightStateOnResults(results) {
           expect(results).to.be.true; // eslint-disable-line no-unused-expressions
           done();
         };
 
         state.bri(255).hue(65535).sat(255);
-        hue.setGroupState(1, state).then((response) => {
+        hue.setGroupState(testValues.testLightId, state).then((response) => {
           validateLightStateOnResults(response.data);
         });
       });
     });
-
   });
 });

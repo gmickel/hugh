@@ -26,7 +26,7 @@ describe('Hugh', () => {
 
     describe('turn light on', () => {
       it('returns a success message', function doneCB(done) {
-        const checkResults = function(results) {
+        const checkResults = function checkResults(results) {
           expect(results).to.be.true; // eslint-disable-line no-unused-expressions
           done();
         };
@@ -40,7 +40,7 @@ describe('Hugh', () => {
 
     describe('set multiple states', () => {
       it('returns a success message', function doneCB(done) {
-        const checkResults = function(results) {
+        const checkResults = function checkResults(results) {
           expect(results).to.be.true; // eslint-disable-line no-unused-expressions
           done();
         };
@@ -52,21 +52,22 @@ describe('Hugh', () => {
       });
     });
 
+    // TODO: Check the increments / decrements using getLightStatus
     describe('set brightness increment', () => {
       beforeEach(function doneCB(done) {
-        const checkResults = function(results) {
+        const checkResults = function checkResults(results) {
           expect(results).to.be.true; // eslint-disable-line no-unused-expressions
           done();
         };
 
-        let initialState = new LightState().on().bri(50);
+        const initialState = new LightState().on().bri(50);
         hue.setLightState(lightId, initialState).then((response) => {
           checkResults(response.data);
         });
       });
 
       it('should increment by 1', function doneCB(done) {
-        const checkResults = function(results) {
+        const checkResults = function checkResults(results) {
           expect(results).to.be.true; // eslint-disable-line no-unused-expressions
           done();
         };
@@ -78,7 +79,7 @@ describe('Hugh', () => {
       });
 
       it('should increment by 10', function doneCB(done) {
-        const checkResults = function(results) {
+        const checkResults = function checkResults(results) {
           expect(results).to.be.true; // eslint-disable-line no-unused-expressions
           done();
         };
@@ -90,7 +91,7 @@ describe('Hugh', () => {
       });
 
       it('should increment by 50', function doneCB(done) {
-        const checkResults = function(results) {
+        const checkResults = function checkResults(results) {
           expect(results).to.be.true; // eslint-disable-line no-unused-expressions
           done();
         };
@@ -104,7 +105,7 @@ describe('Hugh', () => {
 
     describe('set invalid state', () => {
       it('should report error', function doneCB(done) {
-        const checkError = function(results) {
+        const checkError = function checkError(results) {
           expect(results[0].type).to.equal(7);
           expect(results[0].description).to.contain('invalid value');
           expect(results[0].description).to.contain('parameter, sat');
