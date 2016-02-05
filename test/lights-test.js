@@ -12,7 +12,6 @@ chai.use(chaiAsPromised);
 describe('Hugh', () => {
   describe('Lights', () => {
     let hue;
-    let state;
 
     beforeEach(() => {
       hue = new HueApi(testValues.host, testValues.username);

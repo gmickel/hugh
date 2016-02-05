@@ -7,7 +7,7 @@ export function wasSuccessful(results) {
 }
 
 export function parseErrors(results) {
-  let errors = [];
+  const errors = [];
 
   if (util.isArray(results)) {
     for (const result of results) {
@@ -23,4 +23,3 @@ export function parseErrors(results) {
 
   return errors;
 }
-

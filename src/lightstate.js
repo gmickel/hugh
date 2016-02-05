@@ -54,7 +54,9 @@ class LightState {
   }
 
   briInc(value) {
+    // jscs:disable
     this.addValues({ bri_inc: value });
+    // jscs:enable
     return this;
   }
 

@@ -1,3 +1,5 @@
+/* eslint no-param-reassign: 0 */
+
 import * as utils from '../utils.js';
 
 export function responseInterceptor(response) {
