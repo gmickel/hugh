@@ -11,6 +11,9 @@ class HueApi {
       timeout: timeout || 10000,
       port: port || 80
     };
+
+    this.getLightStatus = this.lightStatus;
+    this.getLights = this.lights;
   }
 
   setLightState(id, state) {
@@ -29,18 +32,9 @@ class HueApi {
     return lightsAPI.getAllLights(this.config);
   }
 
-  getLights() {
-    return this.lights();
-  }
-
   lightStatus(id) {
     return lightsAPI.getLightAttributesAndState(this.config, id);
   }
-
-  getLightStatus(id) {
-    return this.lightStatus(id);
-  }
-
 }
 
 module.exports = {

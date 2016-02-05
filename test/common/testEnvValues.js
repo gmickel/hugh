@@ -1,7 +1,7 @@
 module.exports = {
   host: '192.168.0.3',
   username: '3f6881cd1cb85871be12289345131a3',
-  lightsCount: 6,
+  lightsCount: 8,
   locateTimeout: 7000,
   maxScheduleNameLength: 32,
   testLightId: 1,

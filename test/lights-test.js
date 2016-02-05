@@ -20,29 +20,28 @@ describe('Hugh', () => {
 
     describe('get all lights', () => {
       it('returns a success message', function doneCB(done) {
-        const checkResults = function (results) {
-          expect(results).to.be.true; // eslint-disable-line no-unused-expressions
+        const checkResults = function checkResults(results) {
+          // TODO: check number of lights
+          expect(results).to.be.an.instanceOf(Object);
           done();
         };
 
         hue.getLights().then((response) => {
-          console.log(response.data);
           checkResults(response.data);
-          done();
         });
       });
     });
 
     describe('get light status', () => {
       it('returns the status of a light', function doneCB(done) {
-        const checkResults = function (results) {
+        const checkResults = function checkResults(results) {
           expect(results).to.be.an.instanceOf(Object);
           expect(results).to.have.property('name').to.equal(testValues.light.name);
           expect(results).to.have.property('type').to.equal(testValues.light.type);
           done();
         };
 
-        hue.lightStatus(1).then((response) => {
+        hue.getLightStatus(lightId).then((response) => {
           checkResults(response.data);
         });
       });
