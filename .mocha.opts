@@ -6,3 +6,4 @@
 --recursive
 --timeout 15000
 --bail
+--sort
