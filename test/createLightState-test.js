@@ -10,12 +10,6 @@ chai.use(chaiAsPromised);
 
 describe('Hugh', () => {
   describe('Create LightState', () => {
-    function validateConfigResults(results) {
-      expect(results).to.be.an.instanceOf(Object);
-      expect(results).to.have.property('name');
-      expect(results).to.have.property('ipaddress').to.equal(testValues.host);
-    }
-
     it('returns a light state object', function doneCB(done) {
       const state = new LightState();
       expect(state).to.be.an.instanceOf(Object);
