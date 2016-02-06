@@ -12,6 +12,8 @@ chai.use(chaiAsPromised);
 
 /* TODO: A light cannot have its hue, saturation, brightness, effect, ct or xy modified
   when it is turned off. Doing so will return 201 error.
+  Check which states exclude other states, ie. don't send xy and sat/hue together?
+  implement color conversion and helper methods
  */
 
 describe('Hugh', () => {
