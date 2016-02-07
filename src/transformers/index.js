@@ -1,6 +1,7 @@
 /* eslint no-param-reassign: 0 */
 
 import * as utils from '../utils.js';
+import HughError from '../error.js';
 
 export function responseInterceptor(response) {
   if (utils.wasSuccessful(response.data)) {
@@ -8,7 +9,10 @@ export function responseInterceptor(response) {
     response.data = true;
   } else {
     // Transform the response object to only include the errors returned from the hue bridge
-    response.data = utils.parseErrors(response.data);
+    //response.data = utils.parseErrors(response.data);
+    let errors = utils.parseErrors(response.data);
+    let join = errors.join(', ');
+    throw new HughError(utils.parseErrors(response.data).join(', '));
   }
 
   return response;

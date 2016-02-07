@@ -108,7 +108,7 @@ describe('Hugh', () => {
     describe('set invalid state', () => {
       it('should report error', function doneCB(done) {
         const checkError = function checkError(results) {
-          expect(results[0].type).to.equal(7);
+          expect(results.type).to.equal(7);
           expect(results[0].description).to.contain('invalid value');
           expect(results[0].description).to.contain('parameter, sat');
           expect(results[0].address).to.equal(`/lights/${lightId}/state/sat`);
@@ -117,8 +117,9 @@ describe('Hugh', () => {
 
         state.sat(500);
         hue.setLightState(lightId, state).then((response) => {
-          checkError(response.data);
-        });
+          // nothing
+        })
+          .catch(checkError);
       });
     });
   });
