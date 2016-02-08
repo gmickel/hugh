@@ -34,8 +34,8 @@ describe('Hugh', () => {
         };
 
         state.on();
-        hue.setLightState(lightId, state).then((response) => {
-          checkResults(response.data);
+        hue.setLightState(lightId, state).then((results) => {
+          checkResults(results);
         });
       });
     });
@@ -48,8 +48,8 @@ describe('Hugh', () => {
         };
 
         state.bri(255).hue(24000).sat(255).transitionTime(1);
-        hue.setLightState(lightId, state).then((response) => {
-          checkResults(response.data);
+        hue.setLightState(lightId, state).then((results) => {
+          checkResults(results);
         });
       });
     });
@@ -63,8 +63,8 @@ describe('Hugh', () => {
         };
 
         const initialState = new LightState().on().bri(50);
-        hue.setLightState(lightId, initialState).then((response) => {
-          checkResults(response.data);
+        hue.setLightState(lightId, initialState).then((results) => {
+          checkResults(results);
         });
       });
 
@@ -75,8 +75,8 @@ describe('Hugh', () => {
         };
 
         state.briInc(1);
-        hue.setLightState(lightId, state).then((response) => {
-          checkResults(response.data);
+        hue.setLightState(lightId, state).then((results) => {
+          checkResults(results);
         });
       });
 
@@ -87,8 +87,8 @@ describe('Hugh', () => {
         };
 
         state.briInc(10);
-        hue.setLightState(lightId, state).then((response) => {
-          checkResults(response.data);
+        hue.setLightState(lightId, state).then((results) => {
+          checkResults(results);
         });
       });
 
@@ -99,8 +99,8 @@ describe('Hugh', () => {
         };
 
         state.briInc(50);
-        hue.setLightState(lightId, state).then((response) => {
-          checkResults(response.data);
+        hue.setLightState(lightId, state).then((results) => {
+          checkResults(results);
         });
       });
     });
@@ -109,15 +109,15 @@ describe('Hugh', () => {
       it('should report error', function doneCB(done) {
         const checkError = function checkError(results) {
           expect(results.type).to.equal(7);
-          expect(results[0].description).to.contain('invalid value');
-          expect(results[0].description).to.contain('parameter, sat');
-          expect(results[0].address).to.equal(`/lights/${lightId}/state/sat`);
+          expect(results.message).to.contain('invalid value');
+          expect(results.message).to.contain('parameter, sat');
           done();
         };
 
         state.sat(500);
-        hue.setLightState(lightId, state).then((response) => {
-          // nothing
+        state.hue(1000000);
+        hue.setLightState(lightId, state).then((results) => {
+            throw new Error('This should not be called');
         })
           .catch(checkError);
       });

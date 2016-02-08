@@ -2,7 +2,6 @@
 
 --reporter list
 --ui bdd
---compilers js:babel-register
 --recursive
 --timeout 15000
 --bail

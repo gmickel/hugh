@@ -11,6 +11,9 @@ export default class HughError extends Error {
       this.message = error.message || error.description;
       this.type = error.type;
     }
+    if (error.address) {
+      this.address = error.address;
+    }
 
     Error.captureStackTrace(this, this.constructor.name);
   }

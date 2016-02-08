@@ -4,6 +4,7 @@ import * as utils from '../utils.js';
 import HughError from '../error.js';
 
 export function responseInterceptor(response) {
+  let result = response.data;
   if (utils.wasSuccessful(response.data)) {
     // If we have no error, transform the response.data to true
     response.data = true;
