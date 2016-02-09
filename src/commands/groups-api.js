@@ -5,18 +5,20 @@ class Groups {
 
   }
 
-  setGroupState(options, id, state) {
+  setGroupState(config, id, state, options) {
     return invoke({
       method: 'PUT',
-      url: `http://${options.host}/api/${options.username}/groups/${id}/action`,
-      data: state.values
+      url: `http://${config.host}/api/${config.username}/groups/${id}/action`,
+      data: state.values,
+      raw: options.raw
     });
   }
 
-  get(options) {
+  get(config, options) {
     return invoke({
       method: 'GET',
-      url: `http://${options.host}/api/${options.username}/lights/`
+      url: `http://${config.host}/api/${config.username}/lights/`,
+      raw: options.raw
     });
   }
 }

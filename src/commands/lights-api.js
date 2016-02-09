@@ -7,27 +7,28 @@ class Lights {
 
   }
 
-  setLightState(options, id, state) {
+  setLightState(config, id, state, options) {
     return invoke({
       method: 'PUT',
-      url: `http://${options.host}/api/${options.username}/lights/${id}/state`,
-      data: state.values
+      url: `http://${config.host}/api/${config.username}/lights/${id}/state`,
+      data: state.values,
+      raw: options.raw
     });
   }
 
-  getAllLights(options) {
+  getAllLights(config, options) {
     return invoke({
       method: 'GET',
-      url: `http://${options.host}/api/${options.username}/lights/`,
-      raw: true
+      url: `http://${config.host}/api/${config.username}/lights/`,
+      raw: options.raw
     });
   }
 
-  getLightAttributesAndState(options, id) {
+  getLightAttributesAndState(config, id, options) {
     return invoke({
       method: 'GET',
-      url: `http://${options.host}/api/${options.username}/lights/${id}`,
-      raw: true
+      url: `http://${config.host}/api/${config.username}/lights/${id}`,
+      raw: options.raw
     });
   }
 

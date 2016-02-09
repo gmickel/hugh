@@ -16,24 +16,31 @@ class HueApi {
     this.getLights = this.lights;
   }
 
-  setLightState(id, state) {
-    return lightsAPI.setLightState(this.config, id, state);
+  /**
+   *
+   * @param id
+   * @param state
+   * @param options
+ * @returns {*}
+   */
+  setLightState(id, state, options = { raw: false }) {
+    return lightsAPI.setLightState(this.config, id, state, options);
   }
 
-  setGroupState(id, state) {
-    return groupsAPI.setGroupState(this.config, id, state);
+  setGroupState(id, state, options = { raw: false }) {
+    return groupsAPI.setGroupState(this.config, id, state, options);
   }
 
   getConfig() {
     return configAPI.config(this.config);
   }
 
-  lights() {
-    return lightsAPI.getAllLights(this.config);
+  lights(options = { raw: true }) {
+    return lightsAPI.getAllLights(this.config, options);
   }
 
-  lightStatus(id) {
-    return lightsAPI.getLightAttributesAndState(this.config, id);
+  lightStatus(id, options = { raw: true }) {
+    return lightsAPI.getLightAttributesAndState(this.config, id, options);
   }
 }
 
