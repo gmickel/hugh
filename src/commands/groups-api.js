@@ -1,5 +1,4 @@
 import { invoke } from '../http';
-import { responseInterceptor } from '../transformers';
 
 class Groups {
   constructor() {
@@ -10,8 +9,7 @@ class Groups {
     return invoke({
       method: 'PUT',
       url: `http://${options.host}/api/${options.username}/groups/${id}/action`,
-      data: state.values,
-      interceptor: responseInterceptor
+      data: state.values
     });
   }
 

@@ -8,7 +8,8 @@ class Config {
   config(options) {
     return invoke({
       method: 'get',
-      url: `http://${options.host}/api/${options.username}/config`
+      url: `http://${options.host}/api/${options.username}/config`,
+      raw: true
     });
   }
 

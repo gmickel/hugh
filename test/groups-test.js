@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+
 'use strict';
 
 const testValues = require('./common/testEnvValues');
@@ -22,13 +24,13 @@ describe('Hugh', () => {
     describe('turn all lights off', () => {
       it('returns a success message', function doneCB(done) {
         const validateLightStateOnResults = function validateLightStateOnResults(results) {
-          expect(results).to.be.true; // eslint-disable-line no-unused-expressions
+          expect(results).to.be.true;
           done();
         };
 
         state.off();
-        hue.setGroupState(testValues.testLightId, state).then((response) => {
-          validateLightStateOnResults(response.data);
+        hue.setGroupState(testValues.testLightId, state).then((results) => {
+          validateLightStateOnResults(results);
         });
       });
     });
@@ -36,13 +38,13 @@ describe('Hugh', () => {
     describe('turn all lights on', () => {
       it('returns a success message', function doneCB(done) {
         const validateLightStateOnResults = function validateLightStateOnResults(results) {
-          expect(results).to.be.true; // eslint-disable-line no-unused-expressions
+          expect(results).to.be.true;
           done();
         };
 
         state.on();
-        hue.setGroupState(testValues.testLightId, state).then((response) => {
-          validateLightStateOnResults(response.data);
+        hue.setGroupState(testValues.testLightId, state).then((results) => {
+          validateLightStateOnResults(results);
         });
       });
     });
@@ -50,13 +52,13 @@ describe('Hugh', () => {
     describe('set multiple states', () => {
       it('returns a success message', function doneCB(done) {
         const validateLightStateOnResults = function validateLightStateOnResults(results) {
-          expect(results).to.be.true; // eslint-disable-line no-unused-expressions
+          expect(results).to.be.true;
           done();
         };
 
         state.bri(255).hue(65535).sat(255);
-        hue.setGroupState(testValues.testLightId, state).then((response) => {
-          validateLightStateOnResults(response.data);
+        hue.setGroupState(testValues.testLightId, state).then((results) => {
+          validateLightStateOnResults(results);
         });
       });
     });

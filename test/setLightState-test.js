@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+
 'use strict';
 
 const testValues = require('./common/testEnvValues');
@@ -29,7 +31,7 @@ describe('Hugh', () => {
     describe('turn light on', () => {
       it('returns a success message', function doneCB(done) {
         const checkResults = function checkResults(results) {
-          expect(results).to.be.true; // eslint-disable-line no-unused-expressions
+          expect(results).to.be.true;
           done();
         };
 
@@ -43,7 +45,7 @@ describe('Hugh', () => {
     describe('set multiple states', () => {
       it('returns a success message', function doneCB(done) {
         const checkResults = function checkResults(results) {
-          expect(results).to.be.true; // eslint-disable-line no-unused-expressions
+          expect(results).to.be.true;
           done();
         };
 
@@ -58,7 +60,7 @@ describe('Hugh', () => {
     describe('set brightness increment', () => {
       beforeEach(function doneCB(done) {
         const checkResults = function checkResults(results) {
-          expect(results).to.be.true; // eslint-disable-line no-unused-expressions
+          expect(results).to.be.true;
           done();
         };
 
@@ -70,7 +72,7 @@ describe('Hugh', () => {
 
       it('should increment by 1', function doneCB(done) {
         const checkResults = function checkResults(results) {
-          expect(results).to.be.true; // eslint-disable-line no-unused-expressions
+          expect(results).to.be.true;
           done();
         };
 
@@ -82,7 +84,7 @@ describe('Hugh', () => {
 
       it('should increment by 10', function doneCB(done) {
         const checkResults = function checkResults(results) {
-          expect(results).to.be.true; // eslint-disable-line no-unused-expressions
+          expect(results).to.be.true;
           done();
         };
 
@@ -94,7 +96,7 @@ describe('Hugh', () => {
 
       it('should increment by 50', function doneCB(done) {
         const checkResults = function checkResults(results) {
-          expect(results).to.be.true; // eslint-disable-line no-unused-expressions
+          expect(results).to.be.true;
           done();
         };
 
@@ -116,8 +118,8 @@ describe('Hugh', () => {
 
         state.sat(500);
         state.hue(1000000);
-        hue.setLightState(lightId, state).then((results) => {
-            throw new Error('This should not be called');
+        hue.setLightState(lightId, state).then(() => {
+          throw new Error('This should not be called');
         })
           .catch(checkError);
       });

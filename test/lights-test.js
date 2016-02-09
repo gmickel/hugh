@@ -1,3 +1,7 @@
+/* eslint-disable no-unused-expressions */
+
+// TODO: remove raw true and built a better response object
+
 'use strict';
 
 const chai = require('chai');
@@ -25,8 +29,8 @@ describe('Hugh', () => {
           done();
         };
 
-        hue.getLights().then((response) => {
-          checkResults(response.data);
+        hue.getLights().then((results) => {
+          checkResults(results);
         });
       });
     });
@@ -40,8 +44,8 @@ describe('Hugh', () => {
           done();
         };
 
-        hue.getLightStatus(lightId).then((response) => {
-          checkResults(response.data);
+        hue.getLightStatus(lightId).then((results) => {
+          checkResults(results);
         });
       });
     });

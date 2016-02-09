@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+
 'use strict';
 
 const testValues = require('./common/testEnvValues');
@@ -19,8 +21,8 @@ describe('Hugh', () => {
 
     it('returns the discovered Bridges', function doneCB(done) {
       hue.discoverBridges()
-        .then((response) => {
-          validateDiscoveryResults(response.data);
+        .then((results) => {
+          validateDiscoveryResults(results);
           done();
         });
     });

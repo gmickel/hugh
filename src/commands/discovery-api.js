@@ -8,7 +8,8 @@ class Discovery {
   discoverBridges() {
     return invoke({
       method: 'get',
-      url: 'https://www.meethue.com/api/nupnp'
+      url: 'https://www.meethue.com/api/nupnp',
+      raw: true
     });
   }
 

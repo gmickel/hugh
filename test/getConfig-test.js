@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+
 'use strict';
 
 const testValues = require('./common/testEnvValues');
@@ -20,8 +22,8 @@ describe('Hugh', () => {
 
     it('returns the bridge configuration', function doneCB(done) {
       hue.getConfig()
-        .then((response) => {
-          validateConfigResults(response.data);
+        .then((results) => {
+          validateConfigResults(results);
           done();
         });
     });
