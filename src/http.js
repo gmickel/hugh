@@ -1,5 +1,6 @@
 import axios from 'axios';
 import HughError from './error.js';
+import errorHandler from './transformers';
 import { wasSuccessful, parseErrors } from './utils.js';
 
 export function invoke(options) {
@@ -12,16 +13,16 @@ export function invoke(options) {
   });
 
   // TODO: use for transformation of lights object
-  /* if (options.interceptor) {
+  if (options.interceptor) {
     instance.interceptors.response.use(options.interceptor, errorHandler);
-  }*/
+  }
 
   return instance
     .request(options)
     .then(response => {
       let result = response.data;
 
-      if (!!options.raw) {
+      if (!!options.raw || options.interceptor) {
         return result;
       }
 

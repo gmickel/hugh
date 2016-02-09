@@ -14,17 +14,16 @@ const hue = new HueApi(testValues.host, testValues.username);
 
 describe('Hugh', () => {
   describe('config', () => {
-    function validateConfigResults(results) {
-      expect(results).to.be.an.instanceOf(Object);
-      expect(results).to.have.property('name');
-      expect(results).to.have.property('ipaddress').to.equal(testValues.host);
-    }
+    it('returns the bridge configuration', () => {
+      function validateConfigResults(results) {
+        expect(results).to.be.an.instanceOf(Object);
+        expect(results).to.have.property('name');
+        expect(results).to.have.property('ipaddress').to.equal(testValues.host);
+      }
 
-    it('returns the bridge configuration', function doneCB(done) {
-      hue.getConfig()
+      return hue.getConfig()
         .then((results) => {
           validateConfigResults(results);
-          done();
         });
     });
   });

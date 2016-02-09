@@ -16,6 +16,11 @@ export function responseInterceptor(response) {
   return response;
 }
 
+// Add RGB conversion
+export function lightsRGBBuilder(response) {
+  return response;
+}
+
 // catch general axios errors
 export function errorHandler(error) {
   return Promise.reject(error);

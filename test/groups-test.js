@@ -22,42 +22,39 @@ describe('Hugh', () => {
     });
 
     describe('turn all lights off', () => {
-      it('returns a success message', function doneCB(done) {
+      it('returns a success message', () => {
         const validateLightStateOnResults = function validateLightStateOnResults(results) {
           expect(results).to.be.true;
-          done();
         };
 
         state.off();
-        hue.setGroupState(testValues.testLightId, state).then((results) => {
+        return hue.setGroupState(testValues.light.id, state).then((results) => {
           validateLightStateOnResults(results);
         });
       });
     });
 
     describe('turn all lights on', () => {
-      it('returns a success message', function doneCB(done) {
+      it('returns a success message', () => {
         const validateLightStateOnResults = function validateLightStateOnResults(results) {
           expect(results).to.be.true;
-          done();
         };
 
         state.on();
-        hue.setGroupState(testValues.testLightId, state).then((results) => {
+        return hue.setGroupState(testValues.light.id, state).then((results) => {
           validateLightStateOnResults(results);
         });
       });
     });
 
     describe('set multiple states', () => {
-      it('returns a success message', function doneCB(done) {
+      it('returns a success message', () => {
         const validateLightStateOnResults = function validateLightStateOnResults(results) {
           expect(results).to.be.true;
-          done();
         };
 
         state.bri(255).hue(65535).sat(255);
-        hue.setGroupState(testValues.testLightId, state).then((results) => {
+        return hue.setGroupState(testValues.light.id, state).then((results) => {
           validateLightStateOnResults(results);
         });
       });

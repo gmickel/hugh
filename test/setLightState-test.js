@@ -8,7 +8,7 @@ const chaiAsPromised = require('chai-as-promised');
 const expect = require('chai').expect;
 const HueApi = require('../lib/index').HueApi;
 const LightState = require('../lib/lightstate');
-const lightId = testValues.testLightId;
+const lightId = testValues.light.id;
 
 chai.use(chaiAsPromised);
 
@@ -29,28 +29,26 @@ describe('Hugh', () => {
     });
 
     describe('turn light on', () => {
-      it('returns a success message', function doneCB(done) {
+      it('returns a success message', () => {
         const checkResults = function checkResults(results) {
           expect(results).to.be.true;
-          done();
         };
 
         state.on();
-        hue.setLightState(lightId, state).then((results) => {
+        return hue.setLightState(lightId, state).then((results) => {
           checkResults(results);
         });
       });
     });
 
     describe('set multiple states', () => {
-      it('returns a success message', function doneCB(done) {
+      it('returns a success message', () => {
         const checkResults = function checkResults(results) {
           expect(results).to.be.true;
-          done();
         };
 
         state.bri(255).hue(24000).sat(255).transitionTime(1);
-        hue.setLightState(lightId, state).then((results) => {
+        return hue.setLightState(lightId, state).then((results) => {
           checkResults(results);
         });
       });
@@ -58,67 +56,62 @@ describe('Hugh', () => {
 
     // TODO: Check the increments / decrements using getLightStatus
     describe('set brightness increment', () => {
-      beforeEach(function doneCB(done) {
+      beforeEach(() => {
         const checkResults = function checkResults(results) {
           expect(results).to.be.true;
-          done();
         };
 
         const initialState = new LightState().on().bri(50);
-        hue.setLightState(lightId, initialState).then((results) => {
+        return hue.setLightState(lightId, initialState).then((results) => {
           checkResults(results);
         });
       });
 
-      it('should increment by 1', function doneCB(done) {
+      it('should increment by 1', () => {
         const checkResults = function checkResults(results) {
           expect(results).to.be.true;
-          done();
         };
 
         state.briInc(1);
-        hue.setLightState(lightId, state).then((results) => {
+        return hue.setLightState(lightId, state).then((results) => {
           checkResults(results);
         });
       });
 
-      it('should increment by 10', function doneCB(done) {
+      it('should increment by 10', () => {
         const checkResults = function checkResults(results) {
           expect(results).to.be.true;
-          done();
         };
 
         state.briInc(10);
-        hue.setLightState(lightId, state).then((results) => {
+        return hue.setLightState(lightId, state).then((results) => {
           checkResults(results);
         });
       });
 
-      it('should increment by 50', function doneCB(done) {
+      it('should increment by 50', () => {
         const checkResults = function checkResults(results) {
           expect(results).to.be.true;
-          done();
         };
 
         state.briInc(50);
-        hue.setLightState(lightId, state).then((results) => {
+        return hue.setLightState(lightId, state).then((results) => {
           checkResults(results);
         });
       });
     });
 
     describe('set invalid state', () => {
-      it('should report error', function doneCB(done) {
+      it('should report error', () => {
         const checkError = function checkError(results) {
           expect(results.type).to.equal(7);
           expect(results.message).to.contain('invalid value');
           expect(results.message).to.contain('parameter, sat');
-          done();
         };
 
         state.sat(500);
         state.hue(1000000);
-        hue.setLightState(lightId, state).then(() => {
+        return hue.setLightState(lightId, state).then(() => {
           throw new Error('This should not be called');
         })
           .catch(checkError);

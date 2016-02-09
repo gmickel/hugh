@@ -4,7 +4,6 @@ module.exports = {
   lightsCount: 8,
   locateTimeout: 7000,
   maxScheduleNameLength: 32,
-  testLightId: 1,
   hueLightId: 1,
   version: {
     api: '1.10.0',
@@ -18,6 +17,7 @@ module.exports = {
     udn: 'uuid:2f402f80-da50-11e1-9b23-001788096103'
   },
   light: {
+    id: 1,
     name: 'Office mid',
     type: 'Extended color light'
   }
