@@ -91,7 +91,6 @@ class Lights {
     });
   }
 
-
   /* Convenience methods */
 
   getAllLightsWithRGB(config, options) {
