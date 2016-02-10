@@ -48,8 +48,34 @@ class LightState {
     return this;
   }
 
+  /**
+   *
+   * @param x
+   * @param y
+   */
+  xy(x, y) {
+    // TODO: validate input
+    this.addValues({ xy: [x, y] });
+    return this;
+  }
+
+  ct(value) {
+    this.addValues({ ct: value });
+    return this;
+  }
+
+  alert(value) {
+    this.addValues({ alert: value });
+    return this;
+  }
+
   effect(value) {
     this.addValues({ effect: value });
+    return this;
+  }
+
+  transitionTime(value) {
+    this.addValues({ transitiontime: value });
     return this;
   }
 
@@ -60,10 +86,34 @@ class LightState {
     return this;
   }
 
-  transitionTime(value) {
-    this.addValues({ transitiontime: value });
+  satInc(value) {
+    // jscs:disable
+    this.addValues({ sat_inc: value });
+    // jscs:enable
     return this;
   }
+
+  hueInc(value) {
+    // jscs:disable
+    this.addValues({ hue_inc: value });
+    // jscs:enable
+    return this;
+  }
+
+  ctInc(value) {
+    // jscs:disable
+    this.addValues({ ct_inc: value });
+    // jscs:enable
+    return this;
+  }
+
+  xyInc(value) {
+    // jscs:disable
+    this.addValues({ xy_inc: value });
+    // jscs:enable
+    return this;
+  }
+
 }
 
 module.exports = LightState;
