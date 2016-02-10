@@ -1,10 +1,17 @@
 import { invoke } from '../http';
 
+/**
+ *
+ */
 class Discovery {
   constructor() {
 
   }
 
+  /**
+   *
+   * @returns {*}
+   */
   discoverBridges() {
     return invoke({
       method: 'get',

@@ -4,6 +4,11 @@
 
 import * as utils from '../utils.js';
 
+/**
+ *
+ * @param response
+ * @returns {*}
+ */
 export function responseInterceptor(response) {
   if (utils.wasSuccessful(response.data)) {
     // If we have no error, transform the response.data to true
@@ -17,11 +22,21 @@ export function responseInterceptor(response) {
 }
 
 // Add RGB conversion
+/**
+ *
+ * @param response
+ * @returns {*}
+ */
 export function lightsRGBBuilder(response) {
   return response;
 }
 
 // catch general axios errors
+/**
+ * 
+ * @param error
+ * @returns {Promise}
+ */
 export function errorHandler(error) {
   return Promise.reject(error);
 }

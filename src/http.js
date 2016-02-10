@@ -3,6 +3,11 @@ import HughError from './error.js';
 import errorHandler from './transformers';
 import { wasSuccessful, parseErrors } from './utils.js';
 
+/**
+ *
+ * @param options
+ * @returns {axios.Promise}
+ */
 export function invoke(options) {
   const instance = axios.create({
     timeout: options.timeout || 1000,

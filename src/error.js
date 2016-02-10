@@ -1,6 +1,13 @@
 'use strict';
 
+/**
+ *
+ */
 export default class HughError extends Error {
+  /**
+   *
+   * @param error
+   */
   constructor(error) {
     super(error);
     this.name = this.constructor.name;

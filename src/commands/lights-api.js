@@ -3,11 +3,20 @@ import { lightsRGBBuilder } from '../transformers';
 
 // TODO: don't use raw true here, transform response object if we don't want raw
 
+/**
+ *
+ */
 class Lights {
   constructor() {
 
   }
 
+  /**
+   *
+   * @param config
+   * @param options
+   * @returns {*}
+   */
   getAllLights(config, options) {
     return invoke({
       method: 'GET',
@@ -16,6 +25,12 @@ class Lights {
     });
   }
 
+  /**
+   *
+   * @param config
+   * @param options
+   * @returns {*}
+   */
   getNewLights(config, options) {
     return invoke({
       method: 'GET',
@@ -24,6 +39,13 @@ class Lights {
     });
   }
 
+  /**
+   *
+   * @param config
+   * @param deviceIds
+   * @param options
+   * @returns {*}
+   */
   searchForNewLights(config, deviceIds = {}, options) {
     return invoke({
       method: 'POST',
@@ -33,6 +55,13 @@ class Lights {
     });
   }
 
+  /**
+   *
+   * @param config
+   * @param id
+   * @param options
+   * @returns {*}
+   */
   getLightAttributesAndState(config, id, options) {
     return invoke({
       method: 'GET',
@@ -93,6 +122,12 @@ class Lights {
 
   /* Convenience methods */
 
+  /**
+   *
+   * @param config
+   * @param options
+   * @returns {*}
+   */
   getAllLightsWithRGB(config, options) {
     return invoke({
       method: 'GET',

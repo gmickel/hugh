@@ -1,11 +1,21 @@
 const util = require('util');
 
+/**
+ *
+ * @param results
+ * @returns {boolean}
+ */
 export function wasSuccessful(results) {
   for (const result of results) {
     return result.success !== undefined;
   }
 }
 
+/**
+ *
+ * @param results
+ * @returns {Array}
+ */
 export function parseErrors(results) {
   const errors = [];
 

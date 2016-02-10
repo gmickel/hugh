@@ -1,10 +1,18 @@
 import { invoke } from '../http';
 
+/**
+ *
+ */
 class Config {
   constructor() {
 
   }
 
+  /**
+   *
+   * @param options
+   * @returns {*}
+   */
   config(options) {
     return invoke({
       method: 'get',
