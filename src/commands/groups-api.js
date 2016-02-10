@@ -50,7 +50,8 @@ class Groups {
     });
   }
 
-  // TODO: As of 1.4 it is not possible to delete a group of type "LightSource" or "Luminaire" This will return a type 305 error.
+  // TODO: As of 1.4 it is not possible to delete a group of type "LightSource" or "Luminaire"
+  // This will return a type 305 error.
   deleteGroup(config, id, options) {
     return invoke({
       method: 'DELETE',

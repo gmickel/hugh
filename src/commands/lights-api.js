@@ -42,7 +42,8 @@ class Lights {
   }
 
   /**
-   * Used to rename lights. A light can have its name changed when in any state, including when it is unreachable or off
+   * Used to rename lights. A light can have its name changed when in any state
+   * including when it is unreachable or off
    * @param config
    * @param id
    * @param data
