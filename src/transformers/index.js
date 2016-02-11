@@ -33,7 +33,6 @@ export function lightsRGBBuilder(response) {
 
 // catch general axios errors
 /**
- * 
  * @param error
  * @returns {Promise}
  */
