@@ -42,6 +42,11 @@ class HueApi {
   lightStatus(id, options = { raw: true }) {
     return lightsAPI.getLightAttributesAndState(this.config, id, options);
   }
+
+  newLights(options = { raw: true }) {
+    return lightsAPI.getNewLights(this.config, options);
+  }
+
 }
 
 module.exports = {

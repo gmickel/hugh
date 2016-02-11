@@ -35,6 +35,18 @@ describe('Hugh', () => {
       });
     });
 
+    describe('get new lights', () => {
+      it('returns an object containing any new lights found', () => {
+        const checkResults = function checkResults(results) {
+          expect(results).to.be.an.instanceOf(Object);
+        };
+
+        return hue.newLights().then((results) => {
+          checkResults(results);
+        });
+      });
+    });
+
     describe('get light status', () => {
       it('returns the status of a light', () => {
         const checkResults = function checkResults(results) {
