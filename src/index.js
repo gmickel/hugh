@@ -47,6 +47,14 @@ class HueApi {
     return lightsAPI.getNewLights(this.config, options);
   }
 
+  renameLight(id, name, options = { raw: false }) {
+    return lightsAPI.setLightAttributes(this.config, id, name, options);
+  }
+
+  deleteLight(id, options = { raw: true }) {
+    return lightsAPI.deleteLights(this.config, id, options);
+  }
+
 }
 
 module.exports = {

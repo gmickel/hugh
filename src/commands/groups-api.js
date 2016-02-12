@@ -29,6 +29,7 @@ class Groups {
    * @param options
    * @returns {*}
    */
+
   // TODO: Group building method
   createGroup(config, data, options) {
     return invoke({
@@ -62,6 +63,7 @@ class Groups {
    * @param options
    * @returns {*}
    */
+
   // TODO: Group building method
   setGroupAttributes(config, id, data, options) {
     return invoke({

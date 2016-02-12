@@ -20,5 +20,9 @@ module.exports = {
     id: 1,
     name: 'Office mid',
     type: 'Extended color light'
+  },
+  newlight: {
+    id: 8,
+    name: 'Bedroom'
   }
 };

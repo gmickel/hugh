@@ -7,6 +7,7 @@ const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 const expect = require('chai').expect;
 const HueApi = require('../lib/index').HueApi;
+const checkResultsWereSuccessful = require('./common/utils.js');
 const LightState = require('../lib/lightstate');
 const lightId = testValues.light.id;
 
@@ -30,26 +31,18 @@ describe('Hugh', () => {
 
     describe('turn light on', () => {
       it('returns a success message', () => {
-        const checkResults = function checkResults(results) {
-          expect(results).to.be.true;
-        };
-
         state.on();
         return hue.setLightState(lightId, state).then((results) => {
-          checkResults(results);
+          checkResultsWereSuccessful(results);
         });
       });
     });
 
     describe('set multiple states', () => {
       it('returns a success message', () => {
-        const checkResults = function checkResults(results) {
-          expect(results).to.be.true;
-        };
-
         state.bri(255).hue(24000).sat(255).transitionTime(1);
         return hue.setLightState(lightId, state).then((results) => {
-          checkResults(results);
+          checkResultsWereSuccessful(results);
         });
       });
     });
@@ -57,46 +50,30 @@ describe('Hugh', () => {
     // TODO: Check the increments / decrements using getLightStatus
     describe('set brightness increment', () => {
       beforeEach(() => {
-        const checkResults = function checkResults(results) {
-          expect(results).to.be.true;
-        };
-
         const initialState = new LightState().on().bri(50);
         return hue.setLightState(lightId, initialState).then((results) => {
-          checkResults(results);
+          checkResultsWereSuccessful(results);
         });
       });
 
       it('should increment by 1', () => {
-        const checkResults = function checkResults(results) {
-          expect(results).to.be.true;
-        };
-
         state.briInc(1);
         return hue.setLightState(lightId, state).then((results) => {
-          checkResults(results);
+          checkResultsWereSuccessful(results);
         });
       });
 
       it('should increment by 10', () => {
-        const checkResults = function checkResults(results) {
-          expect(results).to.be.true;
-        };
-
         state.briInc(10);
         return hue.setLightState(lightId, state).then((results) => {
-          checkResults(results);
+          checkResultsWereSuccessful(results);
         });
       });
 
       it('should increment by 50', () => {
-        const checkResults = function checkResults(results) {
-          expect(results).to.be.true;
-        };
-
         state.briInc(50);
         return hue.setLightState(lightId, state).then((results) => {
-          checkResults(results);
+          checkResultsWereSuccessful(results);
         });
       });
     });
