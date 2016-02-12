@@ -3,7 +3,7 @@
 /**
  *
  */
-export default class HughError extends Error {
+class HughError extends Error {
   /**
    *
    * @param error
@@ -26,3 +26,5 @@ export default class HughError extends Error {
     Error.captureStackTrace(this, this.constructor.name);
   }
 }
+
+module.exports = HughError;

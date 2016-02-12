@@ -62,5 +62,7 @@ module.exports = {
 
   discoverBridges: function discoverBridges() {
     return discoveryAPI.discoverBridges();
-  }
+  },
+
+  version: require('../package.json').version
 };
