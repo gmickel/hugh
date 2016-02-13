@@ -30,22 +30,27 @@ describe('Hugh', () => {
           expect(results[lightId].name).to.equal(testValues.light.name);
         };
 
-        return hue.getLights().then((results) => {
+        return hue.getAllLights().then((results) => {
           checkResults(results);
         });
       });
     });
 
-    describe('get new lights', () => {
-      it('returns an object containing any new lights found', () => {
-        const checkResults = function checkResults(results) {
-          expect(results).to.be.an.instanceOf(Object);
-          expect(results[testValues.newlight.id].name).to.equal(testValues.newlight.name);
-        };
-
-        return hue.newLights().then((results) => {
-          checkResults(results);
-        });
+    describe('search for new lights', () => {
+      it('returns true if the search was started', () => {  // eslint-disable-line arrow-body-style
+        return hue.lightSearch().then((results) => {
+          checkResultsWereSuccessful(results);
+        })
+          .then(() => {
+            describe('get new lights', () => {
+              it('should return search active', () => { // eslint-disable-line arrow-body-style
+                return hue.newLights().then((results) => {
+                  expect(results).to.be.an.instanceOf(Object);
+                  expect(results.lastscan).to.equal('active');
+                });
+              });
+            });
+          });
       });
     });
 
@@ -57,7 +62,7 @@ describe('Hugh', () => {
           expect(results).to.have.property('type').to.equal(testValues.light.type);
         };
 
-        return hue.getLightStatus(lightId).then((results) => {
+        return hue.getLightAttributesAndState(lightId).then((results) => {
           checkResults(results);
         });
       });
