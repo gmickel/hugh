@@ -24,5 +24,11 @@ module.exports = {
   newlight: {
     id: 8,
     name: 'Bedroom'
+  },
+  group: {
+    id: 1,
+    name: 'Office',
+    lights: ['3', '1', '2', '4'],
+    type: 'LightGroup'
   }
 };

@@ -4,10 +4,12 @@
 
 const testValues = require('./common/testEnvValues');
 const chai = require('chai');
+const expect = require('chai').expect;
 const chaiAsPromised = require('chai-as-promised');
 const HueApi = require('../lib/index').HueApi;
 const checkResultsWereSuccessful = require('./common/utils.js');
 const LightState = require('../lib/lightstate');
+const groupId = testValues.group.id;
 
 chai.use(chaiAsPromised);
 
@@ -19,6 +21,20 @@ describe('Hugh', () => {
     beforeEach(() => {
       hue = new HueApi(testValues.host, testValues.username);
       state = new LightState();
+    });
+
+    describe('get all groups', () => {
+      it('returns an object containing all groups found on the hue bridge', () => {
+        const checkResults = function checkResults(results) {
+          expect(results).to.be.an.instanceOf(Object);
+          expect(results[groupId].name).to.equal(testValues.group.name);
+          expect(results[groupId].lights).to.deep.equal(testValues.group.lights);
+        };
+
+        return hue.groups().then((results) => {
+          checkResults(results);
+        });
+      });
     });
 
     describe('turn all lights off', () => {
