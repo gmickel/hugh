@@ -37,6 +37,21 @@ describe('Hugh', () => {
       });
     });
 
+    describe('create group', () => {
+      it('returns a success message', () => {
+        const group = {
+          lights: ['1', '2'],
+          name: 'testgroup',
+          type: 'LightGroup'
+        };
+        return hue.createGroup(group).then((results) => {
+          checkResultsWereSuccessful(results);
+        });
+      });
+    });
+
+    // TODO: find group with testgroup name and delete by id
+
     describe('turn all lights off', () => {
       it('returns a success message', () => {
         state.off();
