@@ -1,6 +1,6 @@
 {
   "name": "hugh",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "Node.js Library for communicating with the Philips Hue Bridge and Lights",
   "main": "lib/index.js",
   "repository": {
