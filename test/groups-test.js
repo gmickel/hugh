@@ -14,7 +14,7 @@ const groupId = testValues.group.id;
 chai.use(chaiAsPromised);
 
 describe('Hugh', () => {
-  describe('setGroupState', () => {
+  describe('Groups', () => {
     let hue;
     let state;
 
@@ -39,18 +39,27 @@ describe('Hugh', () => {
 
     describe('create group', () => {
       it('returns a success message', () => {
+        const checkResults = function checkResults(results) {
+          expect(results).to.be.an.instanceOf(Array);
+          expect(results[0]).to.have.property('success');
+        };
+
         const group = {
           lights: ['1', '2'],
           name: 'testgroup',
           type: 'LightGroup'
         };
-        return hue.createGroup(group).then((results) => {
-          checkResultsWereSuccessful(results);
-        });
+        return hue.createGroup(group, { raw: true })
+          .then((results) => {
+            checkResults(results);
+            return results[0].success.id;
+          })
+          .then((createdGroupId) => { // eslint-disable-line arrow-body-style
+            // Delete created group on the bridge
+            return expect(hue.deleteGroup(createdGroupId)).to.eventually.equal(true);
+          });
       });
     });
-
-    // TODO: find group with testgroup name and delete by id
 
     describe('turn all lights off', () => {
       it('returns a success message', () => {
