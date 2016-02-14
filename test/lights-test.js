@@ -38,17 +38,14 @@ describe('Hugh', () => {
 
     describe('search for new lights', () => {
       it('returns true if the search was started', () => {  // eslint-disable-line arrow-body-style
-        return hue.lightSearch().then((results) => {
-          checkResultsWereSuccessful(results);
-        })
-          .then(() => {
-            describe('get new lights', () => {
-              it('should return search active', () => { // eslint-disable-line arrow-body-style
-                return hue.newLights().then((results) => {
-                  expect(results).to.be.an.instanceOf(Object);
-                  expect(results.lastscan).to.equal('active');
-                });
-              });
+        return hue.lightSearch()
+          .then((results) => {
+            checkResultsWereSuccessful(results);
+          })
+          .then(() => { // eslint-disable-line arrow-body-style
+            return hue.newLights().then((results) => {
+              expect(results).to.be.an.instanceOf(Object);
+              expect(results.lastscan).to.equal('active');
             });
           });
       });
