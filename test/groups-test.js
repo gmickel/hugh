@@ -38,7 +38,7 @@ describe('Hugh', () => {
     });
 
     describe('create group', () => {
-      it('returns a success message', () => {
+      it('returns the created group', () => {
         const checkResults = function checkResults(results) {
           expect(results).to.be.an.instanceOf(Array);
           expect(results[0]).to.have.property('success');
@@ -60,6 +60,41 @@ describe('Hugh', () => {
           });
       });
     });
+
+    describe('get group status', () => {
+      it('returns an object containing name, light membership and last command for a group', () => {
+        const checkResults = function checkResults(results) {
+          expect(results).to.be.an.instanceOf(Object);
+          expect(results.name).to.equal(testValues.group.name);
+          expect(results.lights).to.deep.equal(testValues.group.lights);
+        };
+
+        return hue.groupStatus(groupId).then((results) => {
+          checkResults(results);
+        });
+      });
+    });
+
+    describe('set groupAttributes', () => {
+      it('returns a success message', () => {
+        const data = {
+          name: 'changeMe'
+        };
+        return hue.setGroupAttributes(groupId, data)
+          .then((results) => {
+            checkResultsWereSuccessful(results);
+          })
+          .then(() => { // eslint-disable-line arrow-body-style
+            // Change the group name back
+            return expect(hue.setGroupAttributes(
+              groupId,
+              { name: testValues.group.name }
+            )).to.eventually.equal(true);
+          });
+      });
+    });
+
+    /* setGroupState tests */
 
     describe('turn all lights off', () => {
       it('returns a success message', () => {
