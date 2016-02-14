@@ -75,7 +75,8 @@ class Lights {
    * including when it is unreachable or off
    * There are 3 methods available to set the color of the light – hue and saturation (hs), xy or
    * color temperature (ct). If multiple methods are used then a priority is used: xy > ct > hs.
-   * All included parameters will be updated but the ‘colormode’ will be set using the priority system.
+   * All included parameters will be updated but the ‘colormode’
+   * will be set using the priority system.
    * @param config
    * @param id
    * @param data
