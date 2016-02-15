@@ -29,7 +29,16 @@ export function invoke(options) {
 
       if (!!options.raw || options.interceptor) {
         // TODO: check for errors here too
-        return result;
+        const errors = parseErrors(result);
+        if (errors.length === 0) {
+          return result;
+        }
+
+        const error = {
+          type: errors[0].type,
+          message: errors[0].description
+        };
+        return Promise.reject(new HughError(error));
       }
 
       // Check for errors

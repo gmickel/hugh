@@ -9,7 +9,8 @@ class Config {
   }
 
   /**
-   * Creates a new user. The link button on the bridge must be pressed and this command executed within 30 seconds.
+   * Creates a new user. The link button on the bridge must be pressed and this command executed
+   * within 30 seconds.
    * @param config
    * @param data
    * @param options
@@ -62,8 +63,9 @@ class Config {
   }
 
   /**
-   * This command is used to fetch the entire datastore from the device, including settings and state
-   * information for lights, groups, schedules and configuration. It should only be used sparingly
+   * This command is used to fetch the entire datastore from the device,
+   * including settings and state information for
+   * lights, groups, schedules and configuration. It should only be used sparingly
    * as it is resource intensive for the bridge, but is supplied e.g. for synchronization purposes.
    * @param config
    * @param options

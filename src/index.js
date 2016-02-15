@@ -73,7 +73,7 @@ class HueApi {
    * @returns {axios.Promise}
    */
   getDatastore(options = { raw: true }) {
-    return configAPI.getFullState(this.config, options)
+    return configAPI.getFullState(this.config, options);
   }
 
   lights(options = { raw: true }) {
