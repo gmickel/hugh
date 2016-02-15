@@ -20,10 +20,60 @@ class HueApi {
     this.setLightAttributes = this.renameLight;
     this.getAllGroups = this.groups;
     this.getGroupAttributes = this.groupStatus;
+    this.getConfiguration = this.getConfig;
+    this.getFullState = this.getDatastore;
   }
 
-  getConfig() {
-    return configAPI.config(this.config);
+  /**
+   * Creates a new user. The link button on the bridge must be pressed
+   * and this command executed within 30 seconds.
+   * @param devicetype
+   * @param options
+   * @returns {*}
+   */
+  createUser(devicetype, options = { raw: true }) {
+    return configAPI.createUser(this.config, devicetype, options);
+  }
+
+  /**
+   * Returns list of all configuration elements in the bridge. Note all times are stored in UTC.
+   * @param options
+   * @returns {*}
+   */
+  getConfig(options = { raw: true }) {
+    return configAPI.config(this.config, options);
+  }
+
+  /**
+   * Allows the user to set some configuration values.
+   * @param configurationParameters
+   * @param options
+   * @returns {*}
+   */
+  modifyConfig(configurationParameters, options = { raw: false }) {
+    return configAPI.modifyConfig(this.config, configurationParameters, options);
+  }
+
+  /**
+   * Deletes the specified user, <username>, from the whitelist
+   * @param username
+   * @param options
+   * @returns {*}
+   */
+  deleteUser(username, options = { raw: false }) {
+    return configAPI.deleteUser(this.config, username, options);
+  }
+
+  /**
+   * This command is used to fetch the entire datastore from the device, including settings and
+   * state information for lights, groups, schedules and configuration.
+   * It should only be used sparingly as it is resource intensive for the bridge,
+   * but is supplied e.g. for synchronization purposes.
+   * @param options
+   * @returns {axios.Promise}
+   */
+  getDatastore(options = { raw: true }) {
+    return configAPI.getFullState(this.config, options)
   }
 
   lights(options = { raw: true }) {
