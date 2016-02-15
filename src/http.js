@@ -27,6 +27,11 @@ export function invoke(options) {
     .then(response => {
       let result = response.data;
 
+      if (!!options.raw || options.interceptor) {
+        // TODO: check for errors here too
+        return result;
+      }
+
       // Check for errors
       if (!wasSuccessful(result)) {
         const errors = parseErrors(result);
@@ -35,10 +40,6 @@ export function invoke(options) {
           message: errors[0].description
         };
         return Promise.reject(new HughError(error));
-      }
-
-      if (!!options.raw || options.interceptor) {
-        return result;
       }
 
       if (result.success !== undefined) {
