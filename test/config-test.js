@@ -21,11 +21,17 @@ describe('Hugh', () => {
         expect(error.type).to.equal(101);
       }
 
-      return hue.createUser({ devicetype: 'hugh#node' })
-        .then(() => {
-          throw new Error('This should not be called');
+      return hue.modifyConfig({ linkbutton: false })
+        .then((results) => {
+          checkResultsWereSuccessful(results);
         })
-        .catch(validateError);
+        .then(() => { // eslint-disable-line arrow-body-style
+          return hue.createUser({ devicetype: 'hugh#node' })
+            .then(() => {
+              throw new Error('This should not be called');
+            })
+            .catch(validateError);
+        });
     });
   });
 
