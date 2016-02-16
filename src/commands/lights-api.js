@@ -1,8 +1,6 @@
 import { invoke } from '../http';
 import { lightsRGBBuilder } from '../transformers';
 
-// TODO: don't use raw true here, transform response object if we don't want raw
-
 /**
  *
  */

@@ -1,6 +1,7 @@
 import configAPI from './commands/configuration-api';
 import lightsAPI from './commands/lights-api';
 import groupsAPI from './commands/groups-api';
+import scenesAPI from './commands/scenes-api';
 import discoveryAPI from './commands/discovery-api';
 
 class HueApi {
@@ -22,6 +23,8 @@ class HueApi {
     this.getGroupAttributes = this.groupStatus;
     this.getConfiguration = this.getConfig;
     this.getFullState = this.getDatastore;
+    this.activateScene = this.setGroupState;
+    this.recallScene = this.setGroupState;
   }
 
   /**
@@ -201,6 +204,24 @@ class HueApi {
   deleteGroup(id, options = { raw: false }) {
     return groupsAPI.deleteGroup(this.config, id, options);
   }
+
+  getScenes(options = { raw: true }) {
+    return scenesAPI.getAllScenes(this.config, options);
+  }
+
+  modifyScene(sceneId, modifiedData, options = { raw: false }) {
+    return scenesAPI.modifyScene(this.config, sceneId, modifiedData, options);
+  }
+
+  deleteScene(sceneId, options = { raw: false }) {
+    return scenesAPI.deleteScene(this.config, sceneId, options);
+  }
+
+  getScene(sceneId, options = { raw: true }) {
+    return scenesAPI.getScene(this.config, sceneId, options);
+  }
+
+  // TODO: do create / modify scenes (with object)
 
 }
 

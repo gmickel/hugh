@@ -86,6 +86,11 @@ class Groups {
    * Modifies the state of all lights in a group
    * // TODO: A light cannot have its hue, saturation, brightness, effect, ct or xy modified
    * when it is turned off. Doing so will return 201 error.
+   * or as of 1.1 group resource can be used to recall a scene.
+   * Note:  Use group <id> 0 to recall a scene for all lights (which are part of the scene),
+   * or use another group <id> if you want to recall the scene for a specific group of lights.
+   * E.g. Using group 2 would recall the scene for all lights that are in group 2 AND
+   * are part of the specified scene.
    * @param config
    * @param id
    * @param state
