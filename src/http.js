@@ -28,7 +28,6 @@ export function invoke(options) {
       let result = response.data;
 
       if (!!options.raw || options.interceptor) {
-        // TODO: check for errors here too
         const errors = parseErrors(result);
         if (errors.length === 0) {
           return result;
