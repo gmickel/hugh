@@ -22,6 +22,7 @@ class HueApi {
     this.getAllGroups = this.groups;
     this.getGroupAttributes = this.groupStatus;
     this.getConfiguration = this.getConfig;
+    this.getAllScenes = this.scenes;
     this.getFullState = this.getDatastore;
     this.activateScene = this.setGroupState;
     this.recallScene = this.setGroupState;
@@ -205,7 +206,7 @@ class HueApi {
     return groupsAPI.deleteGroup(this.config, id, options);
   }
 
-  getScenes(options = { raw: true }) {
+  scenes(options = { raw: true }) {
     return scenesAPI.getAllScenes(this.config, options);
   }
 

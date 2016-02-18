@@ -30,5 +30,10 @@ module.exports = {
     name: 'Office',
     lights: ['3', '1', '2', '4'],
     type: 'LightGroup'
+  },
+  scene: {
+    id: '087f88f52-on-0',
+    name: 'Sunset on 1427211003598',
+    lights: ['1', '2', '3']
   }
 };

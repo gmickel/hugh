@@ -9,5 +9,6 @@ class Sensors {
   constructor() {
 
   }
+}
 
 export default new Sensors();
