@@ -7,7 +7,6 @@ const chai = require('chai');
 const expect = require('chai').expect;
 const chaiAsPromised = require('chai-as-promised');
 const HueApi = require('../lib/index').HueApi;
-const checkResultsWereSuccessful = require('./common/utils.js');
 
 chai.use(chaiAsPromised);
 

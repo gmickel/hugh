@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 
-'use strict';
+/* 'use strict';
 
 const testValues = require('./common/testEnvValues');
 const chai = require('chai');
@@ -21,3 +21,4 @@ describe('Hugh', () => {
 
   });
 });
+*/

@@ -29,7 +29,8 @@ class Scenes {
   /**
    * Creates the given scene with all lights in the provided lights resource.
    * For a given scene the current light settings of the given lights resources are stored.
-   * If the scene id is recalled in the future, these light settings will be reproduced on these lamps.
+   * If the scene id is recalled in the future, these light settings will be
+   * reproduced on these lamps.
    * If an existing name is used then the settings for this scene will be overwritten
    * and the light states resaved
    * @param config
@@ -104,8 +105,9 @@ class Scenes {
 
   /**
    * Deletes a scene from the bridge
-   * For Version 1 scenes (scenes created with PUT) or Version 2 scenes (scenes created with POST with
-   * the recycle flag set to true and locked to false) when the maximum number of scenes
+   * For Version 1 scenes (scenes created with PUT) or Version 2 scenes
+   * (scenes created with POST wit the recycle flag set to true and locked to false)
+   * when the maximum number of scenes
    * has been reached the scene which has been used the least is recycled
    * @param config
    * @param sceneId
@@ -121,7 +123,8 @@ class Scenes {
   }
 
   /**
-   * Gets the attributes of a given scene. See 4.1 Get all scenes for a description of all attributes.
+   * Gets the attributes of a given scene. See 4.1 Get all scenes for a
+   * description of all attributes.
    * Please note that lightstates are displayed when an individual scene is retrieved
    * (but not for all scenes).
    * @param config

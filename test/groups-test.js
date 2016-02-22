@@ -95,6 +95,7 @@ describe('Hugh', () => {
     });
 
     /* setGroupState tests */
+
     // TODO: recall scene
 
     describe('turn all lights off', () => {
