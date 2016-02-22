@@ -5,7 +5,7 @@
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 const expect = require('chai').expect;
-const LightState = require('../lib/lightstate');
+const LightState = require('../lib/index').LightState;
 
 chai.use(chaiAsPromised);
 

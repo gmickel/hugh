@@ -8,7 +8,7 @@ const expect = require('chai').expect;
 const chaiAsPromised = require('chai-as-promised');
 const HueApi = require('../lib/index').HueApi;
 const checkResultsWereSuccessful = require('./common/utils.js');
-const LightState = require('../lib/lightstate');
+const LightState = require('../lib/index').LightState;
 const groupId = testValues.group.id;
 
 chai.use(chaiAsPromised);

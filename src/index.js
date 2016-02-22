@@ -3,6 +3,7 @@ import lightsAPI from './commands/lights-api';
 import groupsAPI from './commands/groups-api';
 import scenesAPI from './commands/scenes-api';
 import discoveryAPI from './commands/discovery-api';
+import LightState from './lightstate';
 
 class HueApi {
   constructor(host, username, timeout, port) {
@@ -229,6 +230,7 @@ class HueApi {
 
 module.exports = {
   HueApi,
+  LightState,
 
   discoverBridges: function discoverBridges() {
     return discoveryAPI.discoverBridges();
