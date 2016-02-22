@@ -3,6 +3,9 @@
   "version": "0.5.6",
   "description": "Node.js Library for communicating with the Philips Hue Bridge and Lights",
   "main": "lib/index.js",
+  "bugs": {
+    "url": "https://github.com/gmickel/hugh/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/gmickel/hugh"
