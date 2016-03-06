@@ -65,6 +65,21 @@ describe('Hugh', () => {
       });
     });
 
+    describe('get light status with rgb', () => {
+      it('returns the status of a light including the converted rgb values', () => {
+        const checkResults = function checkResults(results) {
+          expect(results).to.be.an.instanceOf(Object);
+          expect(results).to.have.property('name').to.equal(testValues.light.name);
+          expect(results).to.have.property('type').to.equal(testValues.light.type);
+          expect(results.state).to.have.property('rgb').to.be.an.instanceOf(Array);
+        };
+
+        return hue.getLightAttributesAndStateWithRGB(lightId).then((results) => {
+          checkResults(results);
+        });
+      });
+    });
+
     describe('set light attributes', () => {
       it('changes the name of a light', () => {
         const newName = 'New Name';

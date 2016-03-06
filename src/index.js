@@ -1,3 +1,4 @@
+import deepExtend from 'deep-extend';
 import configAPI from './commands/configuration-api';
 import lightsAPI from './commands/lights-api';
 import groupsAPI from './commands/groups-api';
@@ -5,6 +6,7 @@ import scenesAPI from './commands/scenes-api';
 import discoveryAPI from './commands/discovery-api';
 import LightState from './lightstate';
 import GroupState from './groupstate';
+import rgb from './rgb';
 
 class HueApi {
   constructor(host, username, timeout, port) {
@@ -17,6 +19,7 @@ class HueApi {
 
     // TODO: Add aliases here named after the official API methods
     this.getLightAttributesAndState = this.lightStatus;
+    this.getLightAttributesAndStateWithRGB = this.lightStatusWithRGB;
     this.getAllLights = this.lights;
     this.getNewLights = this.newLights;
     this.searchForNewLights = this.lightSearch;
@@ -109,6 +112,26 @@ class HueApi {
    */
   lightStatus(id, options = { raw: true }) {
     return lightsAPI.getLightAttributesAndState(this.config, id, options);
+  }
+
+  /**
+   * Gets the attributes and state of a given light,
+   * converts the xy values to an rgb approximation and adds the rgb values to the object
+   * @param id
+   * @param options
+   * @returns {*}
+   */
+  lightStatusWithRGB(id, options = { raw: true }) {
+    let promise = this.lightStatus(id, options);
+    promise = promise.then((light) => {
+      const brightness = light.state.bri / 254;
+      return deepExtend({
+        state: {
+          rgb: rgb.convertXYtoRGB(light.state.xy[0], light.state.xy[1], brightness)
+        }
+      }, light);
+    });
+    return promise;
   }
 
   /**
