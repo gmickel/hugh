@@ -21,6 +21,7 @@
   "excludeFiles": [
     "dist/**",
     "node_modules/**",
-    "lib/**"
+    "lib/**",
+    "src/rgb.js"
   ]
 }
