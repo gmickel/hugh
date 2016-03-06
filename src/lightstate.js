@@ -1,3 +1,6 @@
+import _ from 'lodash';
+import rgb from './rgb';
+
 /**
  *
  */
@@ -185,6 +188,18 @@ class LightState {
     return this;
   }
 
+  hasRGB() {
+    return !!this.values.rgb;
+  }
+
+  convertRGB(modelId) {
+    if (this.hasRGB()) {
+      this.xy(rgb.convertRGBtoXY(this.values.rgb, modelId));
+    }
+
+    _.unset(this.values, 'rgb');
+    return this;
+  }
 }
 
 module.exports = LightState;

@@ -20,17 +20,4 @@ describe('Hugh', () => {
       done();
     });
   });
-
-  describe('Apply RGB to groupstate', () => {
-    it('should return an error', function doneCB(done) {
-      const state = new GroupState();
-      state.rgb(100, 100, 100);
-      expect(state).to.be.an.instanceOf(Object);
-      expect(state.constructor.name).to.equal('GroupState');
-      expect(state).to.have.property('values');
-      expect(state).to.have.property('scene');
-      done();
-    });
-  });
-
 });

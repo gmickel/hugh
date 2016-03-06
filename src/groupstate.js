@@ -1,5 +1,4 @@
 import LightState from './lightstate';
-import HughError from './error.js';
 
 /**
  *
@@ -25,6 +24,13 @@ class GroupState extends LightState {
   scene(sceneId) {
     this.addValues({ scene: sceneId });
     return this;
+  }
+
+  /**
+   * NYI
+   * @returns {HughError}
+   */
+  convertRGB() {
   }
 }
 

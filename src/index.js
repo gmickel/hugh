@@ -6,6 +6,7 @@ import scenesAPI from './commands/scenes-api';
 import discoveryAPI from './commands/discovery-api';
 import LightState from './lightstate';
 import GroupState from './groupstate';
+import HughError from './error';
 import rgb from './rgb';
 
 class HueApi {
@@ -122,16 +123,14 @@ class HueApi {
    * @returns {*}
    */
   lightStatusWithRGB(id, options = { raw: true }) {
-    let promise = this.lightStatus(id, options);
-    promise = promise.then((light) => {
-      const brightness = light.state.bri / 254;
-      return deepExtend({
-        state: {
-          rgb: rgb.convertXYtoRGB(light.state.xy[0], light.state.xy[1], brightness)
-        }
-      }, light);
-    });
-    return promise;
+    return this.lightStatus(id, options)
+      .then((light) => { // eslint-disable-line arrow-body-style
+        return deepExtend({
+          state: {
+            rgb: rgb.convertXYtoRGB(light.state.xy[0], light.state.xy[1], light.state.bri / 254)
+          }
+        }, light);
+      });
   }
 
   /**
@@ -154,6 +153,14 @@ class HueApi {
    * @returns {*}
    */
   setLightState(id, state, options = { raw: false }) {
+    if (state.hasRGB()) {
+      return this.lightStatus(id)
+        .then((light) => {
+          state.convertRGB(light.modelid);
+          return lightsAPI.setLightState(this.config, id, state, options);
+        });
+    }
+
     return lightsAPI.setLightState(this.config, id, state, options);
   }
 
@@ -219,6 +226,10 @@ class HueApi {
    * @returns {*}
    */
   setGroupState(id, state, options = { raw: false }) {
+    if (state.hasRGB()) {
+      return Promise.reject(new HughError('Applying rgb values to groups isn\'t implemented yet'));
+    }
+
     return groupsAPI.setGroupState(this.config, id, state, options);
   }
 

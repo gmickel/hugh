@@ -95,9 +95,6 @@ describe('Hugh', () => {
     });
 
     /* setGroupState tests */
-
-    // TODO: recall scene
-
     describe('turn all lights off', () => {
       it('returns a success message', () => {
         state.off();
@@ -130,6 +127,16 @@ describe('Hugh', () => {
         state.bri(255).hue(65535).sat(255);
         return hue.setGroupState(groupId, state).then((results) => {
           checkResultsWereSuccessful(results);
+        });
+      });
+    });
+
+    describe('set a state using RGB values', () => {
+      it('should return an error', () => {
+        state.rgb(255, 255, 0);
+        return hue.setGroupState(groupId, state).catch((results) => {
+          expect(results).to.be.an.instanceOf(Error);
+          expect(results.message).to.contain('isn\'t implemented yet');
         });
       });
     });

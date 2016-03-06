@@ -1,4 +1,6 @@
 module.exports = {
+  rgb: [255, 0, 0],
+  xy: [0.6484272236872118, 0.330856101472778],
   host: '192.168.0.3',
   username: '3f6881cd1cb85871be12289345131a3',
   lightsCount: 8,
@@ -19,7 +21,8 @@ module.exports = {
   light: {
     id: 1,
     name: 'Office mid',
-    type: 'Extended color light'
+    type: 'Extended color light',
+    modelId: 'LCT001'
   },
   newlight: {
     id: 8,

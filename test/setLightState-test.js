@@ -94,5 +94,14 @@ describe('Hugh', () => {
           .catch(checkError);
       });
     });
+
+    describe('set a state using RGB values', () => {
+      it('returns a success message', () => {
+        state.rgb(255, 255, 0);
+        return hue.setLightState(lightId, state).then((results) => {
+          checkResultsWereSuccessful(results);
+        });
+      });
+    });
   });
 });
