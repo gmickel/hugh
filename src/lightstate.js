@@ -70,11 +70,11 @@ class LightState {
 
   /**
    *
-   * @param x
-   * @param y
+   * @param args
+   * @returns {LightState}
    */
-  xy(x, y) {
-    // TODO: validate input
+  xy(...args) {
+    const [x, y] = Array.isArray(args[0]) ? args[0] : args;
     this.addValues({ xy: [x, y] });
     return this;
   }
@@ -176,6 +176,12 @@ class LightState {
     // jscs:disable
     this.addValues({ xy_inc: value });
     // jscs:enable
+    return this;
+  }
+
+  rgb(...args) {
+    const [r, g, b] = Array.isArray(args[0]) ? args[0] : args;
+    this.addValues({ rgb: [r, g, b] });
     return this;
   }
 

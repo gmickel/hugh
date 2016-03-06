@@ -40,7 +40,7 @@ describe('Hugh', () => {
 
     describe('set multiple states', () => {
       it('returns a success message', () => {
-        state.bri(255).hue(24000).sat(255).transitionTime(1);
+        state.bri(255).hue(24000).sat(255).transitionTime(1).xy(0.4, 0.3);
         return hue.setLightState(lightId, state).then((results) => {
           checkResultsWereSuccessful(results);
         });

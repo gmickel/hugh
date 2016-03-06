@@ -1,4 +1,5 @@
 import LightState from './lightstate';
+import HughError from './error.js';
 
 /**
  *
@@ -25,7 +26,6 @@ class GroupState extends LightState {
     this.addValues({ scene: sceneId });
     return this;
   }
-
 }
 
 module.exports = GroupState;
