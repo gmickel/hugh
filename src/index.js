@@ -1,4 +1,4 @@
-import deepExtend from 'deep-extend';
+import _ from 'lodash';
 import configAPI from './commands/configuration-api';
 import lightsAPI from './commands/lights-api';
 import groupsAPI from './commands/groups-api';
@@ -22,6 +22,7 @@ class HueApi {
     this.getLightAttributesAndState = this.lightStatus;
     this.getLightAttributesAndStateWithRGB = this.lightStatusWithRGB;
     this.getAllLights = this.lights;
+    this.getAllLightsWithRGB = this.lightsWithRGB;
     this.getNewLights = this.newLights;
     this.searchForNewLights = this.lightSearch;
     this.setLightAttributes = this.renameLight;
@@ -91,6 +92,17 @@ class HueApi {
     return lightsAPI.getAllLights(this.config, options);
   }
 
+  lightsWithRGB(options = { raw: true }) {
+    return this.lights(options)
+      .then((lights) => { // eslint-disable-line arrow-body-style
+        return _.forEach(lights, (light) => {
+          _.set(light,
+            'state.rgb',
+            rgb.convertXYtoRGB(light.state.xy[0], light.state.xy[1], light.state.bri / 254));
+        });
+      });
+  }
+
   newLights(options = { raw: true }) {
     return lightsAPI.getNewLights(this.config, options);
   }
@@ -125,11 +137,9 @@ class HueApi {
   lightStatusWithRGB(id, options = { raw: true }) {
     return this.lightStatus(id, options)
       .then((light) => { // eslint-disable-line arrow-body-style
-        return deepExtend({
-          state: {
-            rgb: rgb.convertXYtoRGB(light.state.xy[0], light.state.xy[1], light.state.bri / 254)
-          }
-        }, light);
+        return _.set(light,
+          'state.rgb',
+          rgb.convertXYtoRGB(light.state.xy[0], light.state.xy[1], light.state.bri / 254));
       });
   }
 

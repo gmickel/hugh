@@ -47,7 +47,6 @@
   },
   "dependencies": {
     "axios": "^0.9.1",
-    "deep-extend": "^0.4.1",
     "lodash": "^4.6.1"
   }
 }
