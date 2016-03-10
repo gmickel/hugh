@@ -6,9 +6,9 @@ const util = require('util');
  * @returns {boolean}
  */
 export function wasSuccessful(results) {
-  for (const result of results) {
+  return results.every((result) => {
     return result.success !== undefined;
-  }
+  });
 }
 
 /**
