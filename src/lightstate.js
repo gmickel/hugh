@@ -200,6 +200,12 @@ class LightState {
     _.unset(this.values, 'rgb');
     return this;
   }
+
+  copy() {
+    const copy = new LightState();
+    copy.addValues(this.values);
+    return copy;
+  }
 }
 
 module.exports = LightState;
