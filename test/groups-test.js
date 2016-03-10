@@ -133,10 +133,9 @@ describe('Hugh', () => {
 
     describe('set a state using RGB values', () => {
       it('should return an error', () => {
-        state.rgb(255, 255, 0);
-        return hue.setGroupState(groupId, state).catch((results) => {
-          expect(results).to.be.an.instanceOf(Error);
-          expect(results.message).to.contain('isn\'t implemented yet');
+        state.rgb(255, 100, 255);
+        return hue.setGroupState(groupId, state).then((results) => {
+          checkResultsWereSuccessful(results);
         });
       });
     });

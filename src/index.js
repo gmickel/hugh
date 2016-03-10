@@ -94,7 +94,7 @@ class HueApi {
 
   lightsWithRGB(options = { raw: true }) {
     return this.lights(options)
-      .then((lights) => { // eslint-disable-line arrow-body-style
+      .then((lights) => {
         return _.forEach(lights, (light) => {
           _.set(light,
             'state.rgb',
@@ -136,7 +136,7 @@ class HueApi {
    */
   lightStatusWithRGB(id, options = { raw: true }) {
     return this.lightStatus(id, options)
-      .then((light) => { // eslint-disable-line arrow-body-style
+      .then((light) => {
         return _.set(light,
           'state.rgb',
           rgb.convertXYtoRGB(light.state.xy[0], light.state.xy[1], light.state.bri / 254));
@@ -236,8 +236,61 @@ class HueApi {
    * @returns {*}
    */
   setGroupState(id, state, options = { raw: false }) {
+    if (state.hasRGB() && state.hasScene()) {
+      return Promise.reject(
+        new HughError('Setting RBG values and a scene concurrently is not possible')
+      );
+    }
+
+    // Setting an RGB value on a group involves getting the modelid for every light in the group
+    // so we can convert the RGB value to the corresponding colour gamut
     if (state.hasRGB()) {
-      return Promise.reject(new HughError('Applying rgb values to groups isn\'t implemented yet'));
+      // Get the lights in the group
+      return this.groupStatus(id)
+        .then((group) => {
+          return group.lights;
+        })
+        .then((lightIds) => {
+          const fn = (lightId) => {
+            return this.lightStatus(lightId, { raw: true });
+          };
+
+          // Map the light ids onto lightStatus, returns an array of each light object
+          const getLightStatusPromises = lightIds.map(fn, this);
+          return Promise.all(getLightStatusPromises)
+            .then((results) => {
+              // The light object no longer contains the light id so we add it
+              return results.map((light, index) => {
+                return _.set(light,
+                  'id',
+                  lightIds[index]);
+              });
+            });
+        })
+        .then((lights) => {
+          const lightStates = [];
+
+          // Create an array of objects with the light id
+          // and the lightstate that will be applied to it
+          for (const light of lights) {
+            const lightState = state.copy();
+            lightState.convertRGB(light.modelid);
+            lightStates.push({ id: light.id, state: lightState });
+          }
+
+          const fn = (lightState) => {
+            return this.setLightState(lightState.id, lightState.state, { raw: false });
+          };
+
+          // Finally set the light state for each light in the group
+          const setLightStatePromises = lightStates.map(fn, this);
+          return Promise.all(setLightStatePromises)
+            .then((results) => {
+              return results.every((result) => {
+                return result;
+              });
+            });
+        });
     }
 
     return groupsAPI.setGroupState(this.config, id, state, options);

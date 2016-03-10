@@ -26,12 +26,10 @@ class GroupState extends LightState {
     return this;
   }
 
-  /**
-   * NYI
-   * @returns {HughError}
-   */
-  convertRGB() {
+  hasScene() {
+    return !!this.values.scene;
   }
+
 }
 
 module.exports = GroupState;
