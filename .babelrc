@@ -1,4 +1,10 @@
 {
-  "presets": ["es2015-node"],
-  "sourceMaps": "both"
+  "sourceMaps": "both",
+  "presets": [
+    ["env", {
+      "targets": {
+        "node": "current"
+      }
+    }]
+  ]
 }

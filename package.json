@@ -11,41 +11,43 @@
     "url": "https://github.com/gmickel/hugh"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --opts .mocha.opts test",
+    "test": "mocha --opts .mocha.opts test",
     "coverage": "istanbul cover --report text --report html --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --reporter dot test/*.js",
     "compile": "babel -d lib/ src/",
-    "compileDev": "babel --presets es2015-node -d lib/ src/ --source-maps true",
+    "compileDev": "babel -d lib/ src/ --source-maps true",
     "fix": "eslint --fix -c ./.eslintrc src test",
     "lint": "eslint -c ./.eslintrc src test --ext .js && jscs src test",
     "preversion": "npm run lint && npm run compile",
-    "watch": "babel --presets es2015-node -d lib/ src/ --watch --source-maps true",
-    "package:check": "./node_modules/.bin/ncu",
-    "package:upgrade": "./node_modules/.bin/ncu -u",
-    "pre-commit": [
-      "test"
-    ]
+    "watch": "babel --presets -d lib/ src/ --watch --source-maps true",
+    "package:check": "ncu",
+    "package:upgrade": "ncu -u",
+    "pre-commit": "test"
   },
   "author": "Gordon Mickel <gordon.mickel@gmail.com>",
-  "contributors": "Daniel Killenberger <daniel.killenberger@gmail.com>",
+  "contributors": [
+    "Daniel Killenberger <daniel.killenberger@gmail.com>"
+  ],
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.4.5",
-    "babel-eslint": "^5.0.0-beta6",
-    "babel-preset-es2015-node": "~4",
+    "babel-eslint": "^7.1.1",
+    "babel-preset-env": "^1.1.4",
+    "babel-preset-es2015-node": "~6",
     "babel-register": "^6.4.3",
     "chai": "^3.4.1",
-    "chai-as-promised": "^5.2.0",
-    "eslint": "^1.10.3",
-    "eslint-config-airbnb": "^5.0.0",
-    "eslint-plugin-react": "^3.16.1",
+    "chai-as-promised": "^6.0.0",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-react": "^6.8.0",
     "isparta": "^4.0.0",
     "istanbul": "^0.4.2",
-    "jscs": "^2.9.0",
-    "mocha": "^2.3.4",
-    "npm-check-updates": "^2.5.6"
+    "jscs": "^3.0.7",
+    "mocha": "^3.2.0",
+    "npm-check-updates": "^2.5.6",
+    "xo": "^0.17.1"
   },
   "dependencies": {
-    "axios": "^0.9.1",
+    "axios": "^0.15.3",
     "lodash": "^4.6.1"
   }
 }
