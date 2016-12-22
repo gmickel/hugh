@@ -3,15 +3,7 @@ import LightState from './lightstate';
 /**
  *
  */
-class GroupState extends LightState {
-  /**
-   *
-   * @param values
-   */
-  constructor(values) {
-    super(values);
-  }
-
+export default class GroupState extends LightState {
   /**
    * Recalls a scene
    * Note:  Use group <id> 0 to recall a scene for all lights (which are part of the scene),
@@ -22,14 +14,12 @@ class GroupState extends LightState {
    * @returns {GroupState}
    */
   scene(sceneId) {
-    this.addValues({ scene: sceneId });
+    this.addValues({scene: sceneId});
     return this;
   }
 
   hasScene() {
-    return !!this.values.scene;
+    return Boolean(this.values.scene);
   }
 
 }
-
-module.exports = GroupState;

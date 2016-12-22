@@ -1,14 +1,14 @@
 import axios from 'axios';
-import HughError from './error.js';
-import errorHandler from './transformers';
-import { wasSuccessful, parseErrors } from './utils.js';
+import HughError from './error';
+import {errorHandler} from './transformers';
+import {wasSuccessful, parseErrors} from './utils';
 
 /**
  *
  * @param options
  * @returns {axios.Promise}
  */
-export function invoke(options) {
+export default function invoke(options) {
   const instance = axios.create({
     timeout: options.timeout || 1000,
     headers: {
@@ -27,7 +27,7 @@ export function invoke(options) {
     .then(response => {
       let result = response.data;
 
-      if (!!options.raw || options.interceptor) {
+      if (Boolean(options.raw) || options.interceptor) {
         const errors = parseErrors(result);
         if (errors.length === 0) {
           return result;
@@ -56,7 +56,7 @@ export function invoke(options) {
 
       return true;
     })
-      .catch(error => {
-        throw error;
+      .catch(err => {
+        throw err;
       });
 }

@@ -1,12 +1,9 @@
-import { invoke } from '../http';
+import invoke from '../http';
 
 /**
  *
  */
 class Config {
-  constructor() {
-
-  }
 
   /**
    * Creates a new user. The link button on the bridge must be pressed and this command executed

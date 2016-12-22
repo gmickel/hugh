@@ -1,4 +1,4 @@
-import { invoke } from '../http';
+import invoke from '../http';
 
 // TODO: handle group types
 // TODO: handle room classes
@@ -7,9 +7,6 @@ import { invoke } from '../http';
  *
  */
 class Groups {
-  constructor() {
-
-  }
 
   /**
    * Gets a list of all groups that have been added to the bridge

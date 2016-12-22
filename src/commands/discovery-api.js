@@ -1,12 +1,9 @@
-import { invoke } from '../http';
+import invoke from '../http';
 
 /**
  *
  */
 class Discovery {
-  constructor() {
-
-  }
 
   /**
    *

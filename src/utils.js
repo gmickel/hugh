@@ -6,7 +6,7 @@ const util = require('util');
  * @returns {boolean}
  */
 export function wasSuccessful(results) {
-  return results.every((result) => {
+  return results.every(result => {
     return result.success !== undefined;
   });
 }
@@ -25,10 +25,8 @@ export function parseErrors(results) {
         errors.push(result.error);
       }
     }
-  } else {
-    if (results.error) {
-      errors.push(results.error);
-    }
+  } else if (results.error) {
+    errors.push(results.error);
   }
 
   return errors;

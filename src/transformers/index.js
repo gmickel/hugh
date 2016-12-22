@@ -2,7 +2,7 @@
 
 // TODO: not using this at the moment
 
-import * as utils from '../utils.js';
+import * as utils from '../utils';
 
 /**
  *

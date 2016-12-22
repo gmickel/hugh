@@ -1,13 +1,10 @@
-import { invoke } from '../http';
+import invoke from '../http';
 import { lightsRGBBuilder } from '../transformers';
 
 /**
  *
  */
 class Lights {
-  constructor() {
-
-  }
 
   /**
    *

@@ -4,7 +4,7 @@ import rgb from './rgb';
 /**
  *
  */
-class LightState {
+export default class LightState {
   /**
    *
    * @param values
@@ -27,7 +27,7 @@ class LightState {
    * @returns {LightState}
    */
   on(value = true) {
-    this.addValues({ on: value });
+    this.addValues({on: value});
     return this;
   }
 
@@ -46,7 +46,7 @@ class LightState {
    * @return {LightState}
    */
   bri(value) {
-    this.addValues({ bri: value });
+    this.addValues({bri: value});
     return this;
   }
 
@@ -57,7 +57,7 @@ class LightState {
    * @return {LightState}
    */
   hue(value) {
-    this.addValues({ hue: value });
+    this.addValues({hue: value});
     return this;
   }
 
@@ -67,7 +67,7 @@ class LightState {
    * @return {LightState}
    */
   sat(value) {
-    this.addValues({ sat: value });
+    this.addValues({sat: value});
     return this;
   }
 
@@ -78,7 +78,7 @@ class LightState {
    */
   xy(...args) {
     const [x, y] = Array.isArray(args[0]) ? args[0] : args;
-    this.addValues({ xy: [x, y] });
+    this.addValues({xy: [x, y]});
     return this;
   }
 
@@ -88,7 +88,7 @@ class LightState {
    * @returns {LightState}
    */
   ct(value) {
-    this.addValues({ ct: value });
+    this.addValues({ct: value});
     return this;
   }
 
@@ -98,7 +98,7 @@ class LightState {
    * @returns {LightState}
    */
   alert(value) {
-    this.addValues({ alert: value });
+    this.addValues({alert: value});
     return this;
   }
 
@@ -108,7 +108,7 @@ class LightState {
    * @returns {LightState}
    */
   effect(value) {
-    this.addValues({ effect: value });
+    this.addValues({effect: value});
     return this;
   }
 
@@ -118,7 +118,7 @@ class LightState {
    * @returns {LightState}
    */
   transitionTime(value) {
-    this.addValues({ transitiontime: value });
+    this.addValues({transitiontime: value});
     return this;
   }
 
@@ -129,7 +129,7 @@ class LightState {
    */
   briInc(value) {
     // jscs:disable
-    this.addValues({ bri_inc: value });
+    this.addValues({bri_inc: value});
     // jscs:enable
     return this;
   }
@@ -141,7 +141,7 @@ class LightState {
    */
   satInc(value) {
     // jscs:disable
-    this.addValues({ sat_inc: value });
+    this.addValues({sat_inc: value});
     // jscs:enable
     return this;
   }
@@ -153,7 +153,7 @@ class LightState {
    */
   hueInc(value) {
     // jscs:disable
-    this.addValues({ hue_inc: value });
+    this.addValues({hue_inc: value});
     // jscs:enable
     return this;
   }
@@ -165,7 +165,7 @@ class LightState {
    */
   ctInc(value) {
     // jscs:disable
-    this.addValues({ ct_inc: value });
+    this.addValues({ct_inc: value});
     // jscs:enable
     return this;
   }
@@ -177,19 +177,19 @@ class LightState {
    */
   xyInc(value) {
     // jscs:disable
-    this.addValues({ xy_inc: value });
+    this.addValues({xy_inc: value});
     // jscs:enable
     return this;
   }
 
   rgb(...args) {
     const [r, g, b] = Array.isArray(args[0]) ? args[0] : args;
-    this.addValues({ rgb: [r, g, b] });
+    this.addValues({rgb: [r, g, b]});
     return this;
   }
 
   hasRGB() {
-    return !!this.values.rgb;
+    return Boolean(this.values.rgb);
   }
 
   convertRGB(modelId) {
@@ -207,5 +207,3 @@ class LightState {
     return copy;
   }
 }
-
-module.exports = LightState;

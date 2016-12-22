@@ -1,4 +1,4 @@
-import { invoke } from '../http';
+import invoke from '../http';
 
 // TODO: support old API
 
@@ -6,9 +6,6 @@ import { invoke } from '../http';
  *
  */
 class Scenes {
-  constructor() {
-
-  }
 
   /**
    * Gets a list of all scenes currently stored in the bridge.
