@@ -4,13 +4,14 @@
 
 'use strict';
 
-const chai = require('chai');
-const chaiAsPromised = require('chai-as-promised');
-const expect = require('chai').expect;
-const testValues = require('./common/testEnvValues');
-const checkResultsWereSuccessful = require('./common/utils.js');
+import chai, {expect} from 'chai';
+import chaiAsPromised from 'chai-as-promised';
+import {HueApi} from '../lib/index';
+
+import testValues from './common/testEnvValues';
+import checkResultsWereSuccessful from './common/utils';
+
 const lightId = testValues.light.id;
-const HueApi = require('../lib/index').HueApi;
 
 chai.use(chaiAsPromised);
 

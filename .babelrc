@@ -1,5 +1,13 @@
 {
-  "sourceMaps": "both",
+  "env": {
+    "development": {
+      "sourceMaps": "both"
+    },
+    "test": {
+      "sourceMaps": "inline",
+      "plugins": [ "istanbul" ]
+    }
+  },
   "presets": [
     ["env", {
       "targets": {

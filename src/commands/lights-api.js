@@ -1,5 +1,5 @@
 import invoke from '../http';
-import { lightsRGBBuilder } from '../transformers';
+import {lightsRGBBuilder} from '../transformers';
 
 /**
  *

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
-const expect = require('chai').expect;
+import {expect} from 'chai';
 
-module.exports = function checkResultsWereSuccessful(results) {
+export default function checkResultsWereSuccessful(results) {
   expect(results).to.be.true;
-};
+}

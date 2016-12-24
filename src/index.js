@@ -9,7 +9,7 @@ import GroupState from './groupstate';
 import HughError from './error';
 import rgb from './rgb';
 
-class HueApi {
+export default class HueApi {
   constructor(host, username, timeout, port) {
     this.config = {
       host,
@@ -88,6 +88,10 @@ class HueApi {
     return configAPI.getFullState(this.config, options);
   }
 
+  /**
+   * @param options
+   * @returns {axios.Promise}
+   */
   lights(options = { raw: true }) {
     return lightsAPI.getAllLights(this.config, options);
   }
@@ -326,6 +330,17 @@ class HueApi {
 
 }
 
+export function discoverBridges() {
+  return discoveryAPI.discoverBridges();
+}
+
+/*
+export function version() {
+  return import {version} from '../package.json';
+}
+*/
+
+/*
 module.exports = {
   HueApi,
   LightState,
@@ -337,3 +352,4 @@ module.exports = {
 
   version: require('../package.json').version
 };
+*/

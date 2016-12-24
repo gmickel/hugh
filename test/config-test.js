@@ -5,9 +5,9 @@
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 const expect = require('chai').expect;
-const HueApi = require('../lib/index').HueApi;
+const HueApi = require('../src/index').HueApi;
 const testValues = require('./common/testEnvValues');
-const checkResultsWereSuccessful = require('./common/utils.js');
+import checkResultsWereSuccessful from './common/utils';
 
 chai.use(chaiAsPromised);
 

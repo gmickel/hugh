@@ -38,3 +38,4 @@ node_modules
 typings
 jsconfig.json
 lib
+.nyc_output

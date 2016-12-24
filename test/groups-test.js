@@ -2,12 +2,12 @@
 
 'use strict';
 
-const testValues = require('./common/testEnvValues');
+import testValues from './common/testEnvValues';
 const chai = require('chai');
 const expect = require('chai').expect;
 const chaiAsPromised = require('chai-as-promised');
 const HueApi = require('../lib/index').HueApi;
-const checkResultsWereSuccessful = require('./common/utils.js');
+import checkResultsWereSuccessful from './common/utils';
 const GroupState = require('../lib/index').GroupState;
 const groupId = testValues.group.id;
 
