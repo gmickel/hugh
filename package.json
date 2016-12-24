@@ -29,9 +29,7 @@
     "package:check": "ncu",
     "package:upgrade": "ncu -u",
     "validate": "npm run lint && npm test",
-    "precommit": "npm run lint",
-    "prepublish": "npm run build",
-    "prepush": "npm run validate"
+    "prepublish": "npm run build"
   },
   "author": "Gordon Mickel <gordon.mickel@gmail.com>",
   "contributors": [
