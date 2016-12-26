@@ -20,6 +20,7 @@
     "build:doc": "doctoc --github --title \"## Contents\" ./src",
     "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha --opts .mocha.opts test",
     "test:ava": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text ava test/*.spec.js",
+    "test:watch": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text ava test/*.spec.js --watch",
     "test:test": "cross-env NODE_ENV=test ava",
     "test:dev": "npm test  | faucet",
     "fix": "xo --fix",
