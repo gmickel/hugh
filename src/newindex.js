@@ -23,7 +23,7 @@ export default function HueApi(host, username, options = {}) {
    */
   function lights(options = {raw: true}) {
     console.log('config', config);
-    return lightsAPI.getAllLights(config, options);
+    return lightsAPI.getAllLightsTest(config, options);
   }
 
     /**

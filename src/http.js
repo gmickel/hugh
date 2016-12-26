@@ -1,7 +1,12 @@
 import axios from 'axios';
+import request from 'superagent';
 import HughError from './error';
 import {errorHandler} from './transformers';
-import {wasSuccessful, parseErrors} from './utils';
+import { wasSuccessful, parseErrors } from './utils';
+
+export function test(options) {
+  return request(options.method, options.url);
+}
 
 /**
  *

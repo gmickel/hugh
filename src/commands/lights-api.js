@@ -1,10 +1,24 @@
-import invoke from '../http';
+import invoke, {test} from '../http';
 import {lightsRGBBuilder} from '../transformers';
 
 /**
  *
  */
 class Lights {
+
+  /**
+   *
+   * @param config
+   * @param options
+   * @returns {*}
+   */
+  getAllLightsTest(config, options) {
+    return test({
+      method: 'GET',
+      url: `http://${config.host}/api/${config.username}/lights/`,
+      raw: options.raw
+    });
+  }
 
   /**
    *

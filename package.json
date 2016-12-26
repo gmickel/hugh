@@ -65,7 +65,8 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
-    "lodash": "^4.6.1"
+    "lodash": "^4.6.1",
+    "superagent": "^3.3.1"
   },
   "nyc": {
     "include": [
@@ -102,7 +103,9 @@
     "concurrency": 5,
     "failFast": true,
     "powerAssert": true,
-    "require": ["babel-register"],
+    "require": [
+      "babel-register"
+    ],
     "babel": "inherit",
     "cache": true
   }
